@@ -8,7 +8,7 @@
       @close="handleClose"
       background-color="#282E38"
       text-color="#fff"
-      active-text-color="#ffd04b">
+      active-text-color="#f57d2d">
       <el-menu-item index="1">
         <i class="el-icon-s-home"></i>
         <span slot="title">首页</span>

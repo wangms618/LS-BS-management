@@ -6,7 +6,9 @@
         <teacher-nav-menu></teacher-nav-menu>
       </el-aside>
       <el-container>
-        <el-header>主页</el-header>
+        <el-header>
+          <v-header></v-header>
+        </el-header>
         <el-main>
           <router-view></router-view>
         </el-main>
@@ -15,15 +17,17 @@
   </div>
 </template>
 <script>
-import TeacherNavMenu from '@/components/Teacher/TeacherNavMenu'
+import TeacherNavMenu from "@/components/Teacher/TeacherNavMenu";
+import VHeader from "@/components/Common/header.vue"
 export default {
   components: {
     TeacherNavMenu,
+    VHeader
   },
   methods: {},
 };
 </script>
-<style lang="less">
+<style lang="less" scopde>
 .el-header {
   background-color: #fff;
   color: #333;
