@@ -8,10 +8,8 @@
       background-color="#282E38"
       text-color="#fff"
       active-text-color="#f57d2d">
-      
       <el-menu-item index="/StudentData">
         <i class="el-icon-s-home"></i>
-      
         <span slot="title">首页</span>
       </el-menu-item>
       <el-menu-item index="/StudentData">

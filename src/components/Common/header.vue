@@ -56,6 +56,11 @@ export default {
       .header-right_setting,
       .header-right_notice {
         width: 60px;
+        height: 60px;
+        .el-icon-setting,.el-icon-message-solid{
+          cursor: pointer;
+        }
+
       }
       .header-right_user {
         .el-dropdown-link {
