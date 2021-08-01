@@ -5,8 +5,6 @@
       router="true"
       default-active="TeacherHome"
       class="el-menu-vertical-demo"
-      @open="handleOpen"
-      @close="handleClose"
       background-color="#282E38"
       text-color="#fff"
       active-text-color="#ffd04b">
@@ -16,7 +14,7 @@
       </el-menu-item>
       <el-menu-item index="LearningData">
         <i class="el-icon-s-claim"></i>
-        <span slot="title">学生数据</span>
+        <span slot="title">学习数据</span>
       </el-menu-item>
       <el-menu-item index="UserManagement">
         <i class="el-icon-s-custom"></i>

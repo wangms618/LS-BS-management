@@ -1,5 +1,5 @@
 <template>
-  <div>User management</div>
+  <div class="container"></div>
 </template>
 
 <script>
