@@ -1,5 +1,5 @@
 <template>
-  <el-row class="tac">
+  <el-row class="tac" >
   <el-col >
     <el-menu
       router="true"
@@ -50,6 +50,6 @@ export default {
 
 <style lang="less">
 .el-menu-item{
-  width: 220px;
+  width: 160px;
 }
 </style>

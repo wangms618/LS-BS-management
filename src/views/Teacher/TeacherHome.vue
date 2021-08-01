@@ -1,7 +1,8 @@
 <template>
   <div class="container">
     <!-- <v-student-menu></v-student-menu>> -->
-    123
+    <i class="el-icon-s-home"></i>
+    <span>首页</span>
   </div>
 </template>
 
