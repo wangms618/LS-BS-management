@@ -2,18 +2,19 @@
   <el-row class="tac">
   <el-col >
     <el-menu
-      default-active="1"
+      router="true"
+      default-active="/"
       class="el-menu-vertical-demo"
       @open="handleOpen"
       @close="handleClose"
       background-color="#282E38"
       text-color="#fff"
       active-text-color="#ffd04b">
-      <el-menu-item index="1">
+      <el-menu-item index="/StudentData">
         <i class="el-icon-s-home"></i>
         <span slot="title">首页</span>
       </el-menu-item>
-      <el-menu-item index="2">
+      <el-menu-item index="/StudentData">
         <i class="el-icon-s-claim"></i>
         <span slot="title">学生数据</span>
       </el-menu-item>

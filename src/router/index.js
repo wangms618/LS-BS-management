@@ -6,8 +6,17 @@ Vue.use(VueRouter)
 const routes = [
   {
     path: '/',
-    name:'Home',
+    name:"Home",
     component:()=>import('@/views/Teacher/TeacherHome.vue')
+  },
+  {
+    path: '/StudentData',
+    name: "StudentData",
+    component: () => import('@/views/Student/StudentData.vue'),
+    // meta:{
+    //   index:2
+    // }
+
   }
 ]
 
