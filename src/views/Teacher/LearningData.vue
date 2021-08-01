@@ -9,7 +9,7 @@
         <el-input placeholder="学员名称" v-model="input" clearable> </el-input>
       </div>
     </div>
-    <div class="content">
+    <div class="data-content">
       <el-tabs v-model="activeName" @tab-click="handleClick">
         <el-tab-pane label="首页" name="home">首页内容</el-tab-pane>
         <el-tab-pane label="掘金文章" name="juejin">掘金文章</el-tab-pane>
@@ -64,10 +64,11 @@ export default {
     }
   }
 }
-.main {
-  width: 100%;
+.data-content {
+  width: calc(100% - 40px);
   background: #fff;
-  height: 590px;
+  height: 570px;
+  padding: 10px 20px;
   margin-top: 20px;
   border-radius: 10px;
 }
