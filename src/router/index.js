@@ -6,43 +6,50 @@ Vue.use(VueRouter)
 const routes = [
   {
     path: '/',
-    redirect:'/TeacherHome',
+    redirect:'/Home',
   },
   {
-    path: '/TeacherHome',
-    name: 'TeacherHome',
-    component:()=>import('@/views/Teacher/TeacherHome.vue')
+    path: '/Home',
+    component: () => import('@/views/Home.vue'),
+    children: [
+      {
+        path: '/TeacherHome',
+        name: 'TeacherHome',
+        component:()=>import('@/views/Teacher/TeacherHome.vue')
+      },
+      {
+        path: '/LearningData',
+        name: 'LearningData',
+        component:()=>import('@/views/Teacher/LearningData.vue')
+      },
+      {
+        path: '/UserManagement',
+        name: 'UserManagement',
+        component:()=>import('@/views/Teacher/UserManagement.vue')
+      },
+      {
+        path: '/ClassList',
+        name: 'ClassList',
+        component:()=>import('@/views/Teacher/ClassList.vue')
+      },
+      {
+        path: '/CourseManagement',
+        name: 'CourseManagement',
+        component:()=>import('@/views/Teacher/CourseManagement.vue')
+      },
+      {
+        path: '/Employed',
+        name: 'Employed',
+        component:()=>import('@/views/Teacher/Employed.vue')
+      },
+      {
+        path: '/Notice',
+        name: 'Notice',
+        component:()=>import('@/views/Teacher/Notice.vue')
+      },
+    ]
   },
-  {
-    path: '/LearningData',
-    name: 'LearningData',
-    component:()=>import('@/views/Teacher/LearningData.vue')
-  },
-  {
-    path: '/UserManagement',
-    name: 'UserManagement',
-    component:()=>import('@/views/Teacher/UserManagement.vue')
-  },
-  {
-    path: '/ClassList',
-    name: 'ClassList',
-    component:()=>import('@/views/Teacher/ClassList.vue')
-  },
-  {
-    path: '/CourseManagement',
-    name: 'CourseManagement',
-    component:()=>import('@/views/Teacher/CourseManagement.vue')
-  },
-  {
-    path: '/Employed',
-    name: 'Employed',
-    component:()=>import('@/views/Teacher/Employed.vue')
-  },
-  {
-    path: '/Notice',
-    name: 'Notice',
-    component:()=>import('@/views/Teacher/Notice.vue')
-  },
+  
 
   // {
   //   path: '/StudentData',
