@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <el-container>
-      <el-aside width="220px">
+      <el-aside width="160px">
         <span>旅梦后台管理系统</span>
         <teacher-nav-menu></teacher-nav-menu>
       </el-aside>
