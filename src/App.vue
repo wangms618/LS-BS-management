@@ -43,5 +43,9 @@ export default {
 }
 .el-main {
   background-color: #f0f2f7;
+  height: 600px;
+}
+.el-main::-webkit-scrollbar {
+  width: 0px;
 }
 </style>
