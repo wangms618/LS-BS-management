@@ -77,8 +77,8 @@ export default {
         width: 400px;
         height: 28px;
         .search-box_left {
-          border-right: 1px solid #000;
-          height: 30px;
+          border-right: 3px solid #8392fd;
+          height: 29px;
           .el-dropdown {
             margin-left: 10px;
             margin-right: 10px;
