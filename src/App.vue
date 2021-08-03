@@ -18,11 +18,11 @@
 </template>
 <script>
 import TeacherNavMenu from "@/components/Teacher/TeacherNavMenu";
-import VHeader from "@/components/Common/header.vue"
+import VHeader from "@/components/Common/header.vue";
 export default {
   components: {
     TeacherNavMenu,
-    VHeader
+    VHeader,
   },
   methods: {},
 };
@@ -33,6 +33,7 @@ export default {
   color: #333;
   text-align: center;
   line-height: 60px;
+  border-bottom: 1px solid #cdcfd3;
 }
 .el-aside {
   background-color: #282e38;
@@ -43,5 +44,9 @@ export default {
 }
 .el-main {
   background-color: #f0f2f7;
+  height: 600px;
+}
+.el-main::-webkit-scrollbar {
+  width: 0px;
 }
 </style>
