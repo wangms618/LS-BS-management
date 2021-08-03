@@ -19,7 +19,7 @@
                 src="https://img03.sogoucdn.com/app/a/100520093/ca86e620b9e623ff-f4709b64c5c0ee80-4767e89ad0a20b3e72a61fe4a89414f2.jpg"
               />
             </div>
-            <div class="header-user_name"><span>蜗牛</span></div>
+            <div class="header-user_name"><span>名长不超过八个字</span></div>
             <div class="icon">
               <i class="el-icon-arrow-down el-icon--right"></i>
             </div>
@@ -52,7 +52,7 @@ export default {};
   }
   .header-right {
     display: flex;
-    width: 220px;
+    width: 360px;
     .header-right_setting,
     .header-right_notice {
       width: 60px;
@@ -67,7 +67,7 @@ export default {};
         cursor: pointer;
         color: #000;
         display: flex;
-        width: 120px;
+        width: 200px;
         height: 60px;
         box-sizing: border-box;
         .header-user_img {
@@ -82,7 +82,7 @@ export default {};
           }
         }
         .header-user_name {
-          width: 30px;
+          width: 120px;
         }
       }
       .el-icon-arrow-down {

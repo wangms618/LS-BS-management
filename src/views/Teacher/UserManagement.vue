@@ -5,7 +5,9 @@
       <span class="header-title">用户管理</span>
     </div>
     <div class="user-main">
-      <search-box></search-box>
+      <search-box>
+        <span slot="search-category">用户号码</span>
+      </search-box>
       <div class="user-info">
         <el-table :data="tableData" style="width: 100%" height="500">
           <el-table-column  prop="date" label="日期" width="180">

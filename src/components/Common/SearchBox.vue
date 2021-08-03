@@ -7,7 +7,8 @@
           <div class="search-box_left">
             <el-dropdown>
               <span class="el-dropdown-link">
-                用户编号<i class="el-icon-arrow-down el-icon--right"></i>
+                <slot name="search-category"></slot>
+                <i class="el-icon-arrow-down el-icon--right"></i>
               </span>
               <el-dropdown-menu slot="dropdown">
                 <el-dropdown-item>1</el-dropdown-item>
