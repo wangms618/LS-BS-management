@@ -8,7 +8,11 @@
       <span class="toregister" @click="toRegister">点击这里注册账号</span>
       <div class="login-account">
         <img src="../assets/img/userlogo.png" alt="" />
-        <el-input placeholder="登录账号" v-model="username" > </el-input>
+        <el-input
+          placeholder="登录账号"
+          v-model="username"
+        >
+        </el-input>
       </div>
       <div class="login-password">
         <img src="../assets/img/passlogo.png" />
@@ -37,11 +41,11 @@ export default {
       rememberpw: false,
     };
   },
-  methods:{
-    toRegister(){
-      this.$router.push('Home')
-    }
-  }
+  methods: {
+    toRegister() {
+      this.$router.push("Home");
+    },
+  },
 };
 </script>
 
@@ -72,7 +76,7 @@ export default {
       top: 80px;
       font-weight: 400;
     }
-    .toregister{
+    .toregister {
       position: absolute;
       font-size: 14px;
       top: 110px;
@@ -106,8 +110,9 @@ export default {
       border-radius: 40px;
       display: flex;
       img {
-        width: 50px;
-        height: 50px;
+        width: 40px;
+        height: 40px;
+        margin: 5px;
       }
       .el-input {
         height: 50px;
