@@ -154,9 +154,6 @@ export default {
           contactDetails: "dsf",
         },
       ],
-      currentPage: 1, // 当前页码
-      total: 20, // 总条数
-      pageSize: 5, // 每页的数据条数
     };
   },
   methods: {

@@ -70,8 +70,7 @@ export default {
   margin-top: 20px;
   border-radius: 10px;
 }
-/deep/ .el-tabs__item {
-  width: 150px;
-  text-align: center;
+#table-home {
+  width: 200px;
 }
 </style>

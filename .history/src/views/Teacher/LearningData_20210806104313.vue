@@ -3,7 +3,7 @@
     <div class="header">
       <div class="header-left">
         <i class="el-icon-s-claim" style="color: #ffd04b"></i>
-        <span class="header-title">发布管理</span>
+        <span class="header-title">学习数据</span>
       </div>
       <div class="header-right">
         <el-input placeholder="学员名称" v-model="input" clearable> </el-input>
@@ -11,9 +11,11 @@
     </div>
     <div class="data-content">
       <el-tabs v-model="activeName" @tab-click="handleClick">
-        <el-tab-pane label="任务" name="home">任务</el-tab-pane>
-        <el-tab-pane label="书籍推荐" name="juejin">书籍推荐</el-tab-pane>
-        <el-tab-pane label="公告" name="leetcode">公告</el-tab-pane>
+        <el-tab-pane label="首页" name="home">首页内容</el-tab-pane>
+        <el-tab-pane label="掘金文章" name="juejin">掘金文章</el-tab-pane>
+        <el-tab-pane label="LeetCode" name="leetcode">LeetCode</el-tab-pane>
+        <el-tab-pane label="GitHub" name="github">GitHub</el-tab-pane>
+        <el-tab-pane label="赛事研学" name="events">赛事研学</el-tab-pane>
       </el-tabs>
     </div>
   </div>
@@ -25,7 +27,7 @@ export default {
     return {
       input: "",
       // activeName跟随name
-      activeName: "home",
+      activeName: 'home',
     };
   },
   methods: {
@@ -69,9 +71,5 @@ export default {
   padding: 10px 20px;
   margin-top: 20px;
   border-radius: 10px;
-}
-/deep/ .el-tabs__item {
-  width: 150px;
-  text-align: center;
 }
 </style>

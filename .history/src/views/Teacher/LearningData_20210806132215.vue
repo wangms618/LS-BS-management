@@ -71,7 +71,7 @@ export default {
   border-radius: 10px;
 }
 /deep/ .el-tabs__item {
-  width: 150px;
+  width: 200px;
   text-align: center;
 }
 </style>

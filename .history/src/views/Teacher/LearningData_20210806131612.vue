@@ -69,9 +69,8 @@ export default {
   padding: 10px 20px;
   margin-top: 20px;
   border-radius: 10px;
-}
-/deep/ .el-tabs__item {
-  width: 150px;
-  text-align: center;
+  .el-tabs__item.is-active {
+    width: 100px;
+  }
 }
 </style>

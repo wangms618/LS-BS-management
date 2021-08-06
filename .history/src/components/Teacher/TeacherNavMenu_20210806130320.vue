@@ -42,9 +42,7 @@ export default {
 
 <style lang="less">
 .el-menu-item {
-  margin-top: 20px;
-  height: 80px;
-  line-height: 80px;
+  line-height: 200px;
   width: 160px;
 }
 </style>

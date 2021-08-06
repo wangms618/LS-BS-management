@@ -68,7 +68,7 @@
         @size-change="handleSizeChange"
         @current-change="handleCurrentChange"
         :current-page="currentPage"
-        :page-sizes="[5, 10, 20]"
+        :page-sizes="[1, 5, 10, 20]"
         :page-size="pageSize"
         layout="total, sizes, prev, pager, next, jumper"
         :total="tableData.length"
@@ -154,9 +154,6 @@ export default {
           contactDetails: "dsf",
         },
       ],
-      currentPage: 1, // 当前页码
-      total: 20, // 总条数
-      pageSize: 5, // 每页的数据条数
     };
   },
   methods: {

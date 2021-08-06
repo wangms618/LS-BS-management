@@ -61,17 +61,13 @@
         </el-tab-pane>
       </el-tabs>
     </div>
-    <!-- 分页器 -->
-    <div class="block" style="margin-top: 15px">
+    <div class="footContent">
       <el-pagination
-        align="center"
-        @size-change="handleSizeChange"
-        @current-change="handleCurrentChange"
-        :current-page="currentPage"
-        :page-sizes="[5, 10, 20]"
-        :page-size="pageSize"
-        layout="total, sizes, prev, pager, next, jumper"
-        :total="tableData.length"
+        background
+        :page-size="20"
+        :pager-count="6"
+        layout="prev, pager, next"
+        :total="400"
       >
       </el-pagination>
     </div>
@@ -154,23 +150,7 @@ export default {
           contactDetails: "dsf",
         },
       ],
-      currentPage: 1, // 当前页码
-      total: 20, // 总条数
-      pageSize: 5, // 每页的数据条数
     };
-  },
-  methods: {
-    //每页条数改变时触发 选择一页显示多少行
-    handleSizeChange(val) {
-      console.log(`每页 ${val} 条`);
-      this.currentPage = 1;
-      this.pageSize = val;
-    },
-    //当前页改变时触发 跳转其他页
-    handleCurrentChange(val) {
-      console.log(`当前页: ${val}`);
-      this.currentPage = val;
-    },
   },
 };
 </script>

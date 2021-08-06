@@ -73,5 +73,6 @@ export default {
 /deep/ .el-tabs__item {
   width: 150px;
   text-align: center;
+  margin-left: 10px;
 }
 </style>
