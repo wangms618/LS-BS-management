@@ -1,4 +1,3 @@
-
 <template>
   <el-tabs v-model="activeName" @tab-click="handleClick">
     <el-tab-pane label="课程管理" name="first">

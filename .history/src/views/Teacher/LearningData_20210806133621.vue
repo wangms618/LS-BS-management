@@ -4,9 +4,7 @@
  * @LastEditTime: 2021-08-06 13:36:21
  * @LastEditors: Please set LastEditors
  * @Description: 展示任务发布，书籍推荐，公告的界面
-      发布任务：老师和管理员有权限发布任务和查看任务完成人数，学生可以确认任务是否完成（上传照片）
-      书籍推荐：老师和管理员有权限推荐书籍，学生仅可以查看
-      公告：老师和管理员有权限发布公告，学生仅可以查看
+      发布任务：老师和管理员有权限
  * @FilePath: \lm-bs-management\src\views\Teacher\LearningData.vue
 -->
 <template>

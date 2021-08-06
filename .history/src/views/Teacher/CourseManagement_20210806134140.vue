@@ -1,4 +1,11 @@
-
+<!--
+ * @Author: your name
+ * @Date: 2021-08-06 10:43:14
+ * @LastEditTime: 2021-08-06 13:41:39
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \lm-bs-management\src\views\Teacher\CourseManagement.vue
+-->
 <template>
   <el-tabs v-model="activeName" @tab-click="handleClick">
     <el-tab-pane label="课程管理" name="first">

@@ -1,14 +1,3 @@
-<!--
- * @Author: lvEndBack-manager
- * @Date: 2021-08-06 10:43:14
- * @LastEditTime: 2021-08-06 13:48:36
- * @LastEditors: Please set LastEditors
- * @Description: 展示用户主要信息
-    老师，管理员：查看当前课时，班级数，学生人数    每周到课人数 和 打卡人数   最近打卡人信息
-    学生：leetcode,github,掘金打卡  每周到课情况 每周打卡情况  最近打卡人信息
- * @FilePath: \lm-bs-management\src\views\Teacher\TeacherHome.vue
--->
-
 <template>
   <div class="container">
     <!-- <v-student-menu></v-student-menu>> -->
@@ -35,7 +24,10 @@
       </div>
       <div class="top-right">
         <div class="first">
-          <div class="box1"></div>
+          <div class="box1">
+           
+          </div>
+          
         </div>
         <div class="first">222</div>
         <div class="first">333</div>
@@ -83,7 +75,7 @@
           style="width: 100%"
           @selection-change="handleSelectionChange"
         >
-          <el-table-column type="selection" width="55"> </el-table-column>
+          <el-table-column  type="selection" width="55"> </el-table-column>
           <el-table-column prop="name" label="姓名" width="245">
           </el-table-column>
           <el-table-column label="日期" width="240">
@@ -98,7 +90,7 @@
           </el-table-column>
           <el-table-column prop="operate" label="操作" width="265">
             <el-button class="detail">详情</el-button>
-            <el-button class="detail">修改</el-button>
+              <el-button class="detail">修改</el-button>
           </el-table-column>
         </el-table>
         <div style="margin-top: 20px">
@@ -382,10 +374,10 @@ export default {
 .el-icon-s-data {
   color: #1d8ce0;
 }
-.detail {
+.detail{
   color: #1d8ce0;
 }
-.text {
+.text{
   text-align: center;
 }
 // .el-table .cell{
@@ -420,7 +412,7 @@ export default {
   text-align: center;
   line-height: 150px;
   flex: 1;
-  .box1 {
+  .box1{
     width: 60px;
     height: 60px;
     margin: 20px auto;
@@ -481,6 +473,7 @@ export default {
     height: 270px;
     padding-left: 40px;
   }
+
 }
 .bottom {
   height: 500px;

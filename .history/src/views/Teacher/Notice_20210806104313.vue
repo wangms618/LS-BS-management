@@ -1,11 +1,13 @@
-
 <template>
-  <div>notice</div>
+ <div>notice</div>
 </template>
 
 <script>
-export default {};
+export default {
+
+}
 </script>
 
 <style>
+
 </style>

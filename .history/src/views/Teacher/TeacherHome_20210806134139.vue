@@ -1,11 +1,9 @@
 <!--
  * @Author: lvEndBack-manager
  * @Date: 2021-08-06 10:43:14
- * @LastEditTime: 2021-08-06 13:48:36
+ * @LastEditTime: 2021-08-06 13:41:26
  * @LastEditors: Please set LastEditors
- * @Description: 展示用户主要信息
-    老师，管理员：查看当前课时，班级数，学生人数    每周到课人数 和 打卡人数   最近打卡人信息
-    学生：leetcode,github,掘金打卡  每周到课情况 每周打卡情况  最近打卡人信息
+ * @Description: In User Settings Edit
  * @FilePath: \lm-bs-management\src\views\Teacher\TeacherHome.vue
 -->
 
