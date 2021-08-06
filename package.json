@@ -10,7 +10,7 @@
   "dependencies": {
     "core-js": "^3.6.5",
     "echarts": "^5.1.2",
-    "element-ui": "^2.15.3",
+    "element-ui": "^2.15.4",
     "vue": "^2.6.11",
     "vue-router": "^3.2.0",
     "vuex": "^3.4.0"
@@ -27,5 +27,14 @@
     "less": "^3.0.4",
     "less-loader": "^5.0.0",
     "vue-template-compiler": "^2.6.11"
-  }
+  },
+  "description": "可以通过git status 查看文件的当前状态，简单介绍下每个状态：",
+  "main": ".eslintrc.js",
+  "repository": {
+    "type": "git",
+    "url": "https://gitee.com/wang-mingshun/lm-bs-management.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }
