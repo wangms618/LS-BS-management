@@ -2,25 +2,32 @@
   <div class="container">
     <el-collapse>
       <div class="search">
-        <span>查找</span>
+        <span>精确查找</span>
         <div class="search-box">
           <div class="search-box_left">
             <el-dropdown>
               <span class="el-dropdown-link">
                 <slot name="search-category"></slot>
-                <!-- <i class="el-icon-arrow-down el-icon--right"></i> -->
+                <i class="el-icon-arrow-down el-icon--right"></i>
               </span>
+              <el-dropdown-menu slot="dropdown">
+                <el-dropdown-item>1</el-dropdown-item>
+                <el-dropdown-item>2</el-dropdown-item>
+                <el-dropdown-item>3</el-dropdown-item>
+              </el-dropdown-menu>
             </el-dropdown>
           </div>
           <div class="search-content">
-            <input type="text" class="search-box_input" v-model="searchInfo" />
+            <input type="text" class="search-box_input" v-model="searchInfo"/>
           </div>
           <div class="search-box_right">
             <el-button icon="el-icon-search" size="mini" circle></el-button>
           </div>
         </div>
       </div>
-      <el-collapse-item> 筛选条件 </el-collapse-item>
+      <el-collapse-item> 
+        筛选条件
+      </el-collapse-item>
       <el-row>
         <el-button type="primary">查询</el-button>
         <el-button @click="clearSearch">重置</el-button>
@@ -33,13 +40,13 @@
 export default {
   data() {
     return {
-      searchInfo: "",
-    };
+      searchInfo:''
+    }
   },
   methods: {
-    clearSearch() {
-      this.searchInfo = "";
-    },
+    clearSearch(){
+      this.searchInfo = ''
+    }
   },
 };
 </script>

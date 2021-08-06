@@ -8,8 +8,13 @@
             <el-dropdown>
               <span class="el-dropdown-link">
                 <slot name="search-category"></slot>
-                <!-- <i class="el-icon-arrow-down el-icon--right"></i> -->
+                <i class="el-icon-arrow-down el-icon--right"></i>
               </span>
+              <el-dropdown-menu slot="dropdown">
+                <el-dropdown-item>1</el-dropdown-item>
+                <el-dropdown-item>2</el-dropdown-item>
+                <el-dropdown-item>3</el-dropdown-item>
+              </el-dropdown-menu>
             </el-dropdown>
           </div>
           <div class="search-content">

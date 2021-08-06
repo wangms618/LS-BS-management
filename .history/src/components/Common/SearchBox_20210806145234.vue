@@ -4,14 +4,7 @@
       <div class="search">
         <span>查找</span>
         <div class="search-box">
-          <div class="search-box_left">
-            <el-dropdown>
-              <span class="el-dropdown-link">
-                <slot name="search-category"></slot>
-                <!-- <i class="el-icon-arrow-down el-icon--right"></i> -->
-              </span>
-            </el-dropdown>
-          </div>
+          <div class="search-box_left"></div>
           <div class="search-content">
             <input type="text" class="search-box_input" v-model="searchInfo" />
           </div>
