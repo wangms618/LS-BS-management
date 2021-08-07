@@ -20,7 +20,7 @@
 
 <script>
 import TeacherNavMenu from "@/components/Teacher/TeacherNavMenu";
-import VHeader from "@/components/Common/header.vue";
+import VHeader from "@/components/Common/Header.vue";
 export default {
   components: {
     TeacherNavMenu,
