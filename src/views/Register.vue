@@ -9,7 +9,7 @@
           <el-step
             title="完成注册"
             icon="el-icon-success"
-            :status="finalStatus"
+            :status="registerSuccess ? 'success' : 'wait'"
           ></el-step>
         </el-steps>
       </div>
@@ -19,7 +19,7 @@
         indicator-position="none"
         :pause-on-hover="false"
         :loop="false"
-        :height="index == 1 ? '400px' : '200px'"
+        :height="index == 1 ? '440px' : '200px'"
         :initial-index="0"
         ref="formPage"
       >
@@ -98,7 +98,11 @@
                 </el-select>
               </el-form-item>
               <el-form-item label="班级" prop="ClassId">
-                <el-select placeholder="班级" v-model="detailinfoForm.ClassId">
+                <el-select
+                  placeholder="班级"
+                  v-model="detailinfoForm.ClassId"
+                  :disabled="classList.length == 0"
+                >
                   <el-option
                     v-for="Class in classList"
                     :key="Class.id"
@@ -134,6 +138,9 @@
               >
                 <el-input v-model="detailinfoForm.email"></el-input>
               </el-form-item>
+              <el-form-item label="QQ" prop="qq" class="name info-item">
+                <el-input v-model="detailinfoForm.qq"></el-input>
+              </el-form-item>
               <el-form-item label="家庭住址" prop="addr" class="name info-item">
                 <el-input v-model="detailinfoForm.addr"></el-input>
               </el-form-item>
@@ -142,14 +149,25 @@
         </el-carousel-item>
         <el-carousel-item class="register-result">
           <div class="register-result-wrap">
-            <el-col :sm="12" :lg="6">
+            <el-col :sm="12" :lg="20" v-if="registerSuccess">
               <el-result
                 icon="success"
-                title="成功提示"
-                subTitle="请根据提示进行操作"
+                title="注册成功"
+                subTitle="点击下方按钮前往登录页"
               >
                 <template slot="extra">
-                  <el-button type="primary" size="medium">返回</el-button>
+                  <el-button type="primary" size="medium" @click="toLogin"
+                    >去登录</el-button
+                  >
+                </template>
+              </el-result>
+            </el-col>
+            <el-col :sm="12" :lg="20" v-else>
+              <el-result icon="fail" title="注册失败" subTitle="请联系管理员">
+                <template slot="extra">
+                  <el-button type="primary" size="medium" @click="back"
+                    >返回</el-button
+                  >
                 </template>
               </el-result>
             </el-col>
@@ -160,8 +178,13 @@
         <el-button v-show="index == 1" size="mini" plain @click="pre"
           >上一步</el-button
         >
-        <el-button v-show="index <= 1" type="primary" size="mini" @click="next"
-          >下一步</el-button
+        <el-button
+          :loading="btnLoading"
+          v-show="index <= 1"
+          type="primary"
+          size="mini"
+          @click="next"
+          >{{ index == 1 ? "提交" : "下一步" }}</el-button
         >
       </div>
     </div>
@@ -169,6 +192,8 @@
 </template>
 
 <script>
+import User from "@/api/user.js";
+import Class from "@/api/class.js";
 export default {
   data() {
     var validatePass2 = (rule, value, callback) => {
@@ -180,9 +205,13 @@ export default {
         callback();
       }
     };
-    var checkUsername = (rule, value, callback) => {
-      // callback(new Error("用户名已被注册"));
-      callback();
+    var checkUsername = async (rule, value, callback) => {
+      const res = await User.checkUsername(value);
+      if (res) {
+        callback(new Error("用户名已被注册"));
+      } else {
+        callback();
+      }
     };
     return {
       index: 0,
@@ -253,12 +282,17 @@ export default {
         ClassId: "",
         grade: "",
         school: "",
+        addr: "",
+        email: "",
+        tel: "",
       },
       detailRules: {
         name: [{ required: true, message: "姓名不能为空", trigger: "blur" }],
-        sex: [{ required: true, message: "性别不能为空", trigger: "blur" }],
-        ClassId: [{ required: true, message: "班级不能为空", trigger: "blur" }],
-        grade: [{ required: true, message: "年级不能为空", trigger: "blur" }],
+        sex: [{ required: true, message: "性别不能为空", trigger: "change" }],
+        ClassId: [
+          { required: true, message: "班级不能为空", trigger: "change" },
+        ],
+        grade: [{ required: true, message: "年级不能为空", trigger: "change" }],
         tel: [
           { required: true, message: "手机号不能为空", trigger: "blur" },
           {
@@ -292,18 +326,13 @@ export default {
         },
       ],
       gradeList: [],
+      registerSuccess: false,
+      btnLoading: false,
     };
   },
   created() {
-    const curYear = new Date().getFullYear();
-    this.gradeList.push(curYear);
-    for (let i = 1; i <= 5; i++) {
-      this.gradeList.unshift(curYear - i);
-    }
-    for (let i = 1; i <= 5; i++) {
-      this.gradeList.push(curYear + i);
-    }
-    console.log(this.gradeList);
+    this.initGradeList();
+    this.initClassList();
   },
   methods: {
     pre() {
@@ -312,18 +341,59 @@ export default {
     },
     next() {
       if (this.index == 0) {
+        this.btnLoading = true;
         // 用户名校验
         this.$refs.userinfoForm.validate((valid) => {
           if (valid) {
+            this.btnLoading = false;
             this.$refs.formPage.next();
             this.index++;
           }
         });
       } else if (this.index == 1) {
-        // 提交用户信息
-        this.$refs.formPage.next();
-        this.index++;
+        this.btnLoading = true;
+        this.$refs.detailinfoForm.validate(async (valid) => {
+          if (valid) {
+            // 表单校验通过
+            let userinfo = this.userinfoForm;
+            delete userinfo.rePassword;
+            let detailinfo = this.detailinfoForm;
+            const registerInfo = Object.assign(userinfo, detailinfo);
+            // 提交用户信息
+            const res = await User.register(registerInfo);
+            if (res.code == 200) {
+              // 注册成功
+              this.$refs.formPage.next();
+              this.index++;
+              this.btnLoading = false;
+              this.registerSuccess = true;
+            }
+          }
+        });
       }
+    },
+    initGradeList() {
+      const curYear = new Date().getFullYear();
+      this.gradeList.push(curYear);
+      for (let i = 1; i <= 5; i++) {
+        this.gradeList.unshift(curYear - i);
+      }
+      for (let i = 1; i <= 5; i++) {
+        this.gradeList.push(curYear + i);
+      }
+      console.log(this.gradeList);
+    },
+    async initClassList() {
+      const classList = await Class.getClassList(true);
+      console.log(classList);
+      this.classList = [...classList];
+    },
+    toLogin() {
+      this.$router.push({ path: "/Login" });
+    },
+    back() {
+      this.pre();
+      this.pre();
     },
   },
 };
@@ -375,6 +445,7 @@ export default {
       }
     }
     .form-wrap {
+      overflow: scroll-y;
       width: 100%;
       padding: 0 20px;
       box-sizing: border-box;
@@ -386,6 +457,20 @@ export default {
         .el-input {
           width: 100px;
         }
+      }
+    }
+    .detailinfo {
+      overflow-y: auto;
+    }
+    .register-result {
+      height: 100%;
+      width: 100%;
+      .register-result-wrap {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        width: 100%;
       }
     }
     .btn-wrap {
