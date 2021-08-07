@@ -9,6 +9,10 @@ const routes = [
     redirect: '/Login',
   },
   {
+    path: '/register',
+    component: () => import('@/views/Register.vue')
+  },
+  {
     path: '/Login',
     component: () => import('@/views/Login.vue')
   },
@@ -33,9 +37,24 @@ const routes = [
         component: () => import('@/views/Teacher/UserManagement.vue')
       },
       {
+        path: '/ClassList',
+        name: 'ClassList',
+        component: () => import('@/views/Teacher/ClassList.vue')
+      },
+      {
+        path: '/CourseManagement',
+        name: 'CourseManagement',
+        component: () => import('@/views/Teacher/CourseManagement.vue')
+      },
+      {
         path: '/Employed',
         name: 'Employed',
         component: () => import('@/views/Teacher/Employed.vue')
+      },
+      {
+        path: '/Notice',
+        name: 'Notice',
+        component: () => import('@/views/Teacher/Notice.vue')
       },
     ]
   },
