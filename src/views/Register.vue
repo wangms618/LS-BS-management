@@ -394,6 +394,7 @@ export default {
     back() {
       this.pre();
       this.pre();
+      this.registerSuccess = false
     },
   },
 };
