@@ -24,6 +24,7 @@ const User = {
   async login(username, password) {
     try {
       const res = await (axios.post('/login', { username, password }))
+      console.log(123)
       return res.data
     } catch (err) {
       return false
