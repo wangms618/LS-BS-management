@@ -85,7 +85,7 @@ export default {
           height: 26px;
           .search-box_input {
             margin-left: 4px;
-            width: 260px;
+            width: 280px;
             height: 100%;
             border: none;
             display: block;

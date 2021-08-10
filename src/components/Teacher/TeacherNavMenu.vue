@@ -13,11 +13,11 @@
           <i class="el-icon-s-home"></i>
           <span slot="title">首页</span>
         </el-menu-item>
-        <el-menu-item index="UserManagement">
+        <el-menu-item index="LearningData">
           <i class="el-icon-s-custom"></i>
           <span slot="title">学员情况</span>
         </el-menu-item>
-        <el-menu-item index="LearningData">
+        <el-menu-item index="Notice">
           <i class="el-icon-s-claim"></i>
           <span slot="title">发布管理</span>
         </el-menu-item>
@@ -42,9 +42,8 @@ export default {
 
 <style lang="less">
 .el-menu-item {
-  margin-top: 20px;
-  height: 80px;
-  line-height: 80px;
+  height: 100px;
+  line-height: 100px;
   width: 160px;
 }
 </style>
