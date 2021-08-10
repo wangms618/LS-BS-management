@@ -1,88 +1,180 @@
 <!--
  * @Author: lvEndBack-manager
  * @Date: 2021-08-06 10:43:14
- * @LastEditTime: 2021-08-06 13:36:21
+ * @LastEditTime: 2021-08-06 14:05:05
  * @LastEditors: Please set LastEditors
- * @Description: 展示任务发布，书籍推荐，公告的界面
-      发布任务：老师和管理员有权限发布任务和查看任务完成人数，学生可以确认任务是否完成（上传照片）
-      书籍推荐：老师和管理员有权限推荐书籍，学生仅可以查看
-      公告：老师和管理员有权限发布公告，学生仅可以查看
- * @FilePath: \lm-bs-management\src\views\Teacher\LearningData.vue
+ * @Description: 用户管理
+    管理员：可以查看老师和不同班级学员信息 添加老师 学员信息，删除老师学员信息
+    老师：查看不同老师信息
+ * @FilePath: \lm-bs-management\src\views\Teacher\UserManagement.vue
 -->
+
 <template>
   <div class="container">
     <div class="header">
-      <div class="header-left">
-        <i class="el-icon-s-claim" style="color: #ffd04b"></i>
-        <span class="header-title">发布管理</span>
-      </div>
-      <div class="header-right">
-        <el-input placeholder="学员名称" v-model="input" clearable> </el-input>
-      </div>
+      <i class="el-icon-s-management" style="color: #ffd04b"></i>
+      <span class="header-title">学习情况</span>
     </div>
-    <div class="data-content">
-      <el-tabs v-model="activeName" @tab-click="handleClick">
-        <el-tab-pane label="任务" name="home">任务</el-tab-pane>
-        <el-tab-pane label="书籍推荐" name="juejin">书籍推荐</el-tab-pane>
-        <el-tab-pane label="公告" name="leetcode">公告</el-tab-pane>
-      </el-tabs>
+    <div class="user-main">
+      <search-box>
+        <span slot="search-category">学生姓名</span>
+      </search-box>
+      <div class="user-info">
+        <el-table :data="tableData" height="500">
+          <el-table-column prop="date" label="班级" width="380">
+          </el-table-column>
+          <el-table-column prop="name" label="创建时间" width="380">
+          </el-table-column>
+          <el-table-column prop="address" label="人数" width="440">
+          </el-table-column>
+          <el-table-column prop="address" label="操作" width="430">
+            <el-button class="detail">详情</el-button>
+            <el-button class="detail">修改</el-button>
+          </el-table-column>
+        </el-table>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
+import SearchBox from "@/components/Common/SearchBox.vue";
 export default {
+  components: {
+    SearchBox,
+  },
   data() {
     return {
-      input: "",
-      // activeName跟随name
-      activeName: "home",
+      tableData: [
+        {
+          date: "2016-05-02",
+          name: "王小虎",
+          address: "上海市普陀区金沙江路 1518 弄",
+        },
+        {
+          date: "2016-05-04",
+          name: "王小虎",
+          address: "上海市普陀区金沙江路 1517 弄",
+        },
+        {
+          date: "2016-05-01",
+          name: "王小虎",
+          address: "上海市普陀区金沙江路 1519 弄",
+        },
+        {
+          date: "2016-05-03",
+          name: "王小虎",
+          address: "上海市普陀区金沙江路 1516 弄",
+        },
+        {
+          date: "2016-05-03",
+          name: "王小虎",
+          address: "上海市普陀区金沙江路 1516 弄",
+        },
+        {
+          date: "2016-05-03",
+          name: "王小虎",
+          address: "上海市普陀区金沙江路 1516 弄",
+        },
+        {
+          date: "2016-05-03",
+          name: "王小虎",
+          address: "上海市普陀区金沙江路 1516 弄",
+        },
+        {
+          date: "2016-05-03",
+          name: "王小虎",
+          address: "上海市普陀区金沙江路 1516 弄",
+        },
+        {
+          date: "2016-05-03",
+          name: "王小虎",
+          address: "上海市普陀区金沙江路 1516 弄",
+        },
+        {
+          date: "2016-05-03",
+          name: "王小虎",
+          address: "上海市普陀区金沙江路 1516 弄",
+        },
+        {
+          date: "2016-05-03",
+          name: "王小虎",
+          address: "上海市普陀区金沙江路 1516 弄",
+        },
+        {
+          date: "2016-05-03",
+          name: "王小虎",
+          address: "上海市普陀区金沙江路 1516 弄",
+        },
+        {
+          date: "2016-05-03",
+          name: "王小虎",
+          address: "上海市普陀区金沙江路 1516 弄",
+        },
+        {
+          date: "2016-05-03",
+          name: "王小虎",
+          address: "上海市普陀区金沙江路 1516 弄",
+        },
+        {
+          date: "2016-05-03",
+          name: "王小虎",
+          address: "上海市普陀区金沙江路 1516 弄",
+        },
+        {
+          date: "2016-05-03",
+          name: "王小虎",
+          address: "上海市普陀区金沙江路 1516 弄",
+        },
+        {
+          date: "2016-05-03",
+          name: "王小虎",
+          address: "上海市普陀区金沙江路 1516 弄",
+        },
+        {
+          date: "2016-05-03",
+          name: "王小虎",
+          address: "上海市普陀区金沙江路 1516 弄",
+        },
+        {
+          date: "2016-05-03",
+          name: "王小虎",
+          address: "上海市普陀区金沙江路 1516 弄",
+        },
+        {
+          date: "2016-05-03",
+          name: "王小虎",
+          address: "上海市普陀区金沙江路 1516 弄",
+        },
+      ],
     };
-  },
-  methods: {
-    handleClick(tab, event) {
-      console.log(tab.$options.propsData, event);
-      console.log(this.activeName);
-    },
   },
 };
 </script>
 
 <style lang="less" scoped>
+.detail {
+  color: #1d8ce0;
+}
 .header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  .header-left {
-    width: 200px;
-    height: 30px;
-    position: relative;
-    .header-title {
-      position: absolute;
-      left: 20px;
-      font-weight: bold;
-    }
-  }
-  .header-right {
-    padding-right: 20px;
-    border-right: 1px solid #727070;
-    .learn-data_search {
-      height: 20px;
-      border-radius: 20px;
-      border: 1px solid #445cfc;
-    }
+  .header-title {
+    margin-left: 10px;
+    font-weight: bold;
   }
 }
-.data-content {
-  width: calc(100% - 40px);
-  background: #fff;
-  height: 570px;
-  padding: 10px 20px;
+.user-main {
   margin-top: 20px;
-  border-radius: 10px;
-}
-/deep/ .el-tabs__item {
-  width: 150px;
-  text-align: center;
+  width: 100%;
+  border-radius: 20px;
+  overflow: hidden;
+  .user-info {
+    padding: 20px;
+    border-radius: 20px;
+    margin-top: 20px;
+    width: calc(100% - 40px);
+    height: 500px;
+    background: #fff;
+    overflow: hidden;
+  }
 }
 </style>
