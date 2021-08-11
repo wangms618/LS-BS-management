@@ -14,6 +14,7 @@
             style="width: 100px; height: 100px"
             :src="item.imgUrl"
             fit="scale-down"
+            :preview-src-list="imgList"
           ></el-image>
         </div>
         <div class="books-name">
@@ -23,25 +24,27 @@
           <el-link type="primary" :href="item.link">链接</el-link>
         </div>
         <div class="books-button">
-          <el-dropdown>
-            <el-button type="primary" size="medium">
-              操作<i class="el-icon-arrow-down el-icon--right"></i>
-            </el-button>
-            <el-dropdown-menu slot="dropdown">
-              <el-dropdown-item>修改</el-dropdown-item>
-              <el-dropdown-item>删除</el-dropdown-item>
-            </el-dropdown-menu>
-          </el-dropdown>
+          <div class="buttons">
+            <el-button size="small" @click="changeBooks(item.id)"
+              >修改</el-button
+            >
+            <el-button size="small" type="danger" @click="deleteBooks(item.id)"
+              >删除</el-button
+            >
+          </div>
         </div>
       </div>
     </div>
     <div class="add-books">
-      <el-button type="primary" size="medium">添加书籍</el-button>
+      <el-button type="primary" size="medium" @click="addBooks"
+        >添加书籍</el-button
+      >
     </div>
   </div>
 </template>
 
 <script>
+import addBooks from "@/components/Teacher/AddBooks";
 export default {
   data() {
     return {
@@ -96,7 +99,58 @@ export default {
           id: 18324,
         },
       ],
+      // 图片放大必须是一个数组
+      imgList: [
+        "https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg",
+      ],
     };
+  },
+  methods: {
+    // 添加书籍
+    addBooks() {
+      const submitTask = this.$createElement;
+      this.$msgbox({
+        title: "添加任务", // 标题
+        closeOnClickModal: false, // 不可点击遮罩层取消，防止误触
+        message: submitTask(addBooks, { ref: "childMethod" }), // MessageBox 消息正文内容，这里需要调用子组件中的方法
+        showCancelButton: true, // 是否显示取消按钮
+        confirmButtonText: "添加书籍", // 确定按钮的文本内容
+        cancelButtonText: "取消", // 取消按钮的文本内容
+        beforeClose: (action, instance, done) => {
+          if (action === "confirm") {
+            // 点击确定
+            instance.confirmButtonLoading = true;
+            instance.confirmButtonText = "执行中...";
+            if (this.$refs.childMethod.onSubmit()) {
+              // 调用子组件的onSubmit方法，成功提交
+              instance.confirmButtonLoading = false;
+              done();
+            } else {
+              instance.confirmButtonLoading = false;
+              instance.confirmButtonText = "添加书籍";
+            }
+          } else {
+            // 点击退出
+            done();
+          }
+        },
+      }).then(() => {
+        this.$message({
+          // 消息提示
+          type: "success",
+          message: "添加成功",
+          duration: 2000,
+        });
+      });
+    },
+    // 修改书籍信息
+    changeBooks(id) {
+      console.log(id);
+    },
+    // 删除书籍信息
+    deleteBooks(id) {
+      console.log(id);
+    },
   },
 };
 </script>
@@ -160,13 +214,13 @@ export default {
       .books-button {
         width: 25%;
         display: flex;
-        .el-dropdown {
+        .buttons {
           margin: auto;
         }
       }
     }
   }
-  .add-books{
+  .add-books {
     margin-top: 10px;
     .el-button {
       float: right;

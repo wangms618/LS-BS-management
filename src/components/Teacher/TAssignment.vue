@@ -8,21 +8,35 @@
       highlight-current-row
       @current-change="handleCurrentChange"
     >
-      <el-table-column prop="code" sortable label="编号" width="80"></el-table-column>
+      <el-table-column
+        prop="code"
+        sortable
+        label="编号"
+        width="80"
+      ></el-table-column>
       <el-table-column prop="plan" label="任务" width="180"></el-table-column>
       <el-table-column prop="name" label="发布者" width="180">
       </el-table-column>
       <el-table-column prop="pushDate" label="发布时间"> </el-table-column>
       <el-table-column prop="finishNum" label="已完成人数"> </el-table-column>
       <el-table-column label="操作" width="200">
-        <el-button type="primary" size="small" @click.stop="changeAssignment()"> 修改 </el-button>
-        <el-button type="primary" size="small" @click.stop="deleteAssignment()"> 删除 </el-button>
+        <template slot-scope="scope">
+          <!-- 拿到对应行的对象 -->
+          <el-button size="small" @click.stop="changeAssignment(scope.row)">
+            修改
+          </el-button>
+          <el-button
+            type="danger"
+            size="small"
+            @click.stop="deleteAssignment(scope.row)"
+          >
+            删除
+          </el-button>
+        </template>
       </el-table-column>
     </el-table>
     <div class="add-assignment">
-      <el-button type="primary" size="medium" @click="addAssignment"
-        >添加任务</el-button
-      >
+      <el-button type="primary" size="medium" @click="addAssignment">添加任务</el-button>
     </div>
   </div>
 </template>
@@ -68,7 +82,7 @@ export default {
         });
         this.tableData.push({
           // 添加数据
-          code:8,
+          code: 8,
           plan: "leetcode刷题123",
           name: "蜗牛123",
           pushDate: "2016-05-02",
@@ -77,13 +91,17 @@ export default {
       });
     },
     // 修改
-    changeAssignment(){
-      console.log();
+    changeAssignment(row) {
+      console.log(row.code);
+    },
+    // 删除
+    deleteAssignment(row) {
+      console.log(row.code);
     },
     // 选中事件
-    handleCurrentChange(currentRow,oldCurrentRow) {
-      console.log(currentRow,oldCurrentRow);
-      console.log('handleCurrentChange');
+    handleCurrentChange(currentRow, oldCurrentRow) {
+      console.log(currentRow, oldCurrentRow);
+      console.log("handleCurrentChange");
     },
   },
   data() {

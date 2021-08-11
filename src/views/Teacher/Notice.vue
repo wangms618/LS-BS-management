@@ -3,7 +3,7 @@
     <div class="header">
       <div class="header-left">
         <i class="el-icon-s-claim" style="color: #ffd04b"></i>
-        <span class="header-title">通知管理</span>
+        <span class="header-title">发布管理</span>
       </div>
       <div class="header-right">
         <el-input placeholder="通知查询" v-model="input" clearable> </el-input>

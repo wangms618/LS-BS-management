@@ -34,8 +34,12 @@
 export default {
   data() {
     return {
-      activeItem: "TeacherHome",
+      activeItem: "",
     };
+  },
+  mounted() {
+    // console.log(window.location.pathname);
+    this.activeItem = (window.location.pathname).slice(1);
   },
 };
 </script>
