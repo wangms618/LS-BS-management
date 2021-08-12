@@ -14,12 +14,16 @@
 
 <script>
 import { Message } from "element-ui";
+import store from '@/store/index'
 export default {
+  mounted(){
+    console.log(store.state.assignments);
+  },
   data() {
     return {
       form: {
-        title: "",
-        desc: "",
+        title: store.state.assignments.plan,
+        desc: store.state.assignments.plan,
       },
     };
   },
@@ -43,6 +47,10 @@ export default {
         return true;
       }
     },
+    onChange(obj){
+      console.log('接收到需要修改的对象的',obj);
+      this.form.title = obj.plan
+    }
   },
 };
 </script>

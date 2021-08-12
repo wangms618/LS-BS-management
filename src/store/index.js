@@ -5,8 +5,15 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
+    assignments: {
+      plan: '',
+      pushDate:'',
+    }
   },
   mutations: {
+    onChange(state,obj) {
+      state.assignments = obj
+    }
   },
   actions: {
   },
