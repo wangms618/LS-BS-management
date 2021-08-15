@@ -18,7 +18,7 @@
         </el-dialog>
       </el-form-item>
       <el-form-item label="书名">
-        <el-input v-model="form.title"></el-input>
+        <el-input v-model="form.title" @blur="OnInput($event)"></el-input>
       </el-form-item>
       <el-form-item label="作者">
         <el-input v-model="form.author"></el-input>
@@ -71,7 +71,7 @@ export default {
         if (pattern.test(this.form.link)) {
           this.form.title = "";
           this.form.author = "";
-          this.form.link="";
+          this.form.link = "";
           return true;
         } else {
           Message({
@@ -80,6 +80,15 @@ export default {
             duration: 2000,
           });
         }
+      }
+    },
+    OnInput(e) {
+      if (!e.target.value) {
+        Message({
+          message: "请输入书名",
+          type: "warning",
+          duration: 2000,
+        });
       }
     },
   },

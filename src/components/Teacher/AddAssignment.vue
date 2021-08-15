@@ -23,7 +23,7 @@ export default {
     return {
       form: {
         title: store.state.assignments.plan,
-        desc: store.state.assignments.plan,
+        desc: store.state.assignments.pushDate,
       },
     };
   },
@@ -47,15 +47,19 @@ export default {
         return true;
       }
     },
-    onChange(obj){
-      console.log('接收到需要修改的对象的',obj);
-      this.form.title = obj.plan
-    }
   },
+  // 问题，无法监听vuex里的assignment
+  // watch:{
+  //   "store.state.assignments"() {
+  //     console.log(123);
+  //     this.form.title = store.getters.getTitle; // 按照规范在这里应该去使用getters来获取数据
+  //     this.form.desc = store.getters.getDexc
+  //   }
+  // }
 };
 </script>
 
-<style lang="less">
+<style lang="less" >
 .el-message-box {
   width: 800px;
 }

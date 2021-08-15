@@ -25,7 +25,7 @@
         </div>
         <div class="books-button">
           <div class="buttons">
-            <el-button size="small" @click="changeBooks(item.id)"
+            <el-button size="small" @click="changeBooks()"
               >修改</el-button
             >
             <el-button size="small" type="danger" @click="deleteBooks(item.id)"
@@ -44,8 +44,11 @@
 </template>
 
 <script>
-import addBooks from "@/components/Teacher/AddBooks";
+// import addBooks from "@/components/Teacher/AddBooks";
+// import { MessageBox,Message } from 'element-ui';
+import { NoticeMixin } from '@/common/js/mixin.js'
 export default {
+  mixins:[NoticeMixin],
   data() {
     return {
       books: [
@@ -106,51 +109,7 @@ export default {
     };
   },
   methods: {
-    // 添加书籍
-    addBooks() {
-      const submitTask = this.$createElement;
-      this.$msgbox({
-        title: "添加任务", // 标题
-        closeOnClickModal: false, // 不可点击遮罩层取消，防止误触
-        message: submitTask(addBooks, { ref: "childMethod" }), // MessageBox 消息正文内容，这里需要调用子组件中的方法
-        showCancelButton: true, // 是否显示取消按钮
-        confirmButtonText: "添加书籍", // 确定按钮的文本内容
-        cancelButtonText: "取消", // 取消按钮的文本内容
-        beforeClose: (action, instance, done) => {
-          if (action === "confirm") {
-            // 点击确定
-            instance.confirmButtonLoading = true;
-            instance.confirmButtonText = "执行中...";
-            if (this.$refs.childMethod.onSubmit()) {
-              // 调用子组件的onSubmit方法，成功提交
-              instance.confirmButtonLoading = false;
-              done();
-            } else {
-              instance.confirmButtonLoading = false;
-              instance.confirmButtonText = "添加书籍";
-            }
-          } else {
-            // 点击退出
-            done();
-          }
-        },
-      }).then(() => {
-        this.$message({
-          // 消息提示
-          type: "success",
-          message: "添加成功",
-          duration: 2000,
-        });
-      });
-    },
-    // 修改书籍信息
-    changeBooks(id) {
-      console.log(id);
-    },
-    // 删除书籍信息
-    deleteBooks(id) {
-      console.log(id);
-    },
+    
   },
 };
 </script>

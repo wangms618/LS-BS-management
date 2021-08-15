@@ -5,18 +5,24 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    assignments: {
-      plan: '',
-      pushDate:'',
-    }
+    // assignments: {
+    //   plan: '',
+    //   pushDate:'',
+    // }
+    assignments: ''
   },
   mutations: {
-    onChange(state,obj) {
+    changeAssignment(state, obj) {
       state.assignments = obj
+      console.log('修改成功',obj.code);
     }
   },
   actions: {
+
   },
-  modules: {
-  }
+  getters: {
+    getTitle: assignments => assignments.plan,
+    getDesc: assignments => assignments.pushDate
+  },
+  modules: {}
 })
