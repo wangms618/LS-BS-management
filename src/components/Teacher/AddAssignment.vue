@@ -16,9 +16,6 @@
 import { Message } from "element-ui";
 import store from '@/store/index'
 export default {
-  mounted(){
-    console.log(store.state.assignments);
-  },
   data() {
     return {
       form: {
@@ -47,15 +44,39 @@ export default {
         return true;
       }
     },
+    onChange(){
+      if (!this.form.title) {
+        Message({
+          message: "请输入任务名称",
+          type: "warning",
+          duration: 2000,
+        });
+      } else if (!this.form.desc) {
+        Message({
+          message: "请输入任务描述",
+          type: "warning",
+          duration: 2000,
+        });
+      } else {
+        this.form.title = '',
+        this.form.desc = ''
+        return true;
+      }
+    }
   },
   // 问题，无法监听vuex里的assignment
-  // watch:{
-  //   "store.state.assignments"() {
-  //     console.log(123);
-  //     this.form.title = store.getters.getTitle; // 按照规范在这里应该去使用getters来获取数据
-  //     this.form.desc = store.getters.getDexc
-  //   }
-  // }
+  computed:{
+    Listen(){
+      return store.state.assignments
+    }
+  },
+  watch:{
+    Listen(newVal) {
+      console.log('监听数据改变',newVal);
+      this.form.title = newVal.plan; // 按照规范在这里应该去使用getters来获取数据
+      this.form.desc = newVal.pushDate
+    }
+  }
 };
 </script>
 

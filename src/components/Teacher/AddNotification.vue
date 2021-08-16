@@ -13,14 +13,27 @@
 </template>
 
 <script>
+import store from "@/store/index";
 export default {
   data() {
     return {
       form:{
-        title:'',
-        desc:''
+        title:store.state.notification.title,
+        desc:store.state.notification.content
       }
     }
+  },
+  computed: {
+    Listen() {
+      return store.state.notification;
+    },
+  },
+  watch: {
+    Listen(newVal) {
+      console.log("监听数据改变", newVal);
+      this.form.title = newVal.title; 
+      this.form.link = newVal.content;
+    },
   },
 }
 </script>

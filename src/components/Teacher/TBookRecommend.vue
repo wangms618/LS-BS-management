@@ -25,7 +25,7 @@
         </div>
         <div class="books-button">
           <div class="buttons">
-            <el-button size="small" @click="changeBooks()"
+            <el-button size="small" @click="changeBooks(item)"
               >修改</el-button
             >
             <el-button size="small" type="danger" @click="deleteBooks(item.id)"
@@ -44,8 +44,6 @@
 </template>
 
 <script>
-// import addBooks from "@/components/Teacher/AddBooks";
-// import { MessageBox,Message } from 'element-ui';
 import { NoticeMixin } from '@/common/js/mixin.js'
 export default {
   mixins:[NoticeMixin],
@@ -55,35 +53,35 @@ export default {
         {
           imgUrl:
             "https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg",
-          name: "你不知道的javascirpt上卷",
+          name: "你不知道的javascirpt上卷1",
           link: "https://leetcode-cn.com/",
           id: 18230,
         },
         {
           imgUrl:
             "https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg",
-          name: "你不知道的javascirpt上卷",
+          name: "你不知道的javascirpt上卷2",
           link: "https://leetcode-cn.com/",
           id: 18324,
         },
         {
           imgUrl:
             "https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg",
-          name: "你不知道的javascirpt上卷",
+          name: "你不知道的javascirpt上卷3",
           link: "https://leetcode-cn.com/",
           id: 18324,
         },
         {
           imgUrl:
             "https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg",
-          name: "你不知道的javascirpt上卷",
+          name: "你不知道的javascirpt上卷4",
           link: "https://leetcode-cn.com/",
           id: 18324,
         },
         {
           imgUrl:
             "https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg",
-          name: "你不知道的javascirpt上卷",
+          name: "你不知道的javascirpt上卷5",
           link: "https://leetcode-cn.com/",
           id: 18324,
         },

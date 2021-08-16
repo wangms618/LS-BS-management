@@ -36,13 +36,13 @@
 
 <script>
 import { Message } from "element-ui";
+import store from "@/store/index";
 export default {
   data() {
     return {
       form: {
-        title: "",
-        author: "",
-        link: "",
+        title: store.state.books.name,
+        link: store.state.books.link,
       },
     };
   },
@@ -82,6 +82,7 @@ export default {
         }
       }
     },
+    // 失去焦点检测输入框
     OnInput(e) {
       if (!e.target.value) {
         Message({
@@ -90,6 +91,18 @@ export default {
           duration: 2000,
         });
       }
+    },
+  },
+  computed: {
+    Listen() {
+      return store.state.books;
+    },
+  },
+  watch: {
+    Listen(newVal) {
+      console.log("监听数据改变", newVal);
+      this.form.title = newVal.name; 
+      this.form.link = newVal.link;
     },
   },
 };

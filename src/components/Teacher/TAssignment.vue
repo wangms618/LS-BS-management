@@ -42,25 +42,15 @@
 </template>
 
 <script>
-// import AddAssignment from "@/components/Teacher/AddAssignment";
-// import { MessageBox,Message } from 'element-ui';
 import { NoticeMixin } from '@/common/js/mixin.js'
 export default {
   mixins:[NoticeMixin],
   methods: {
-    
-
-    
-
-   
-
     // 选中事件
     handleCurrentChange(currentRow, oldCurrentRow) {
       console.log(currentRow, oldCurrentRow);
       console.log("handleCurrentChange");
     },
-
-    // 添加修改
   },
   data() {
     return {
@@ -88,14 +78,14 @@ export default {
         },
         {
           code: 4,
-          plan: "leetcode刷题",
+          plan: "leetcode刷题4",
           name: "蜗牛",
           pushDate: "2016-05-02",
           finishNum: 18 + "人",
         },
         {
           code: 5,
-          plan: "leetcode刷题",
+          plan: "leetcode刷题5",
           name: "蜗牛",
           pushDate: "2016-05-02",
           finishNum: 18 + "人",
