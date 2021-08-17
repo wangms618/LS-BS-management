@@ -3,7 +3,7 @@
     <div class="header">
       <div class="header-left">
         <i class="el-icon-s-claim" style="color: #ffd04b"></i>
-        <span class="header-title">通知管理</span>
+        <span class="header-title">发布管理</span>
       </div>
       <div class="header-right">
         <el-input placeholder="通知查询" v-model="input" clearable> </el-input>
@@ -17,7 +17,9 @@
         <el-tab-pane label="书籍推荐" name="bookRecommend">
           <book-recommend></book-recommend>
         </el-tab-pane>
-        <el-tab-pane label="公告" name="leetcode"><notification></notification></el-tab-pane>
+        <el-tab-pane label="公告" name="notification"
+          ><notification></notification
+        ></el-tab-pane>
         <el-tab-pane label="我发布的" name="github">我发布的</el-tab-pane>
       </el-tabs>
     </div>
@@ -25,20 +27,20 @@
 </template>
 
 <script>
-import Assignment from '@/components/Teacher/TAssignment'
-import BookRecommend from '@/components/Teacher/TBookRecommend'
-import Notification from '@/components/Teacher/TNotification'
+import Assignment from "@/components/Teacher/TAssignment";
+import BookRecommend from "@/components/Teacher/TBookRecommend";
+import Notification from "@/components/Teacher/TNotification";
 export default {
-  components:{
+  components: {
     Assignment,
     BookRecommend,
-    Notification
+    Notification,
   },
   data() {
     return {
       input: "",
       // activeName跟随name
-      activeName: 'assignment',
+      activeName: "assignment",
     };
   },
   methods: {

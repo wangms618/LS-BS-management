@@ -14,12 +14,13 @@
 
 <script>
 import { Message } from "element-ui";
+import store from '@/store/index'
 export default {
   data() {
     return {
       form: {
-        title: "",
-        desc: "",
+        title: store.state.assignments.plan,
+        desc: store.state.assignments.plan,
       },
     };
   },
@@ -43,11 +44,43 @@ export default {
         return true;
       }
     },
+    onChange(){
+      if (!this.form.title) {
+        Message({
+          message: "请输入任务名称",
+          type: "warning",
+          duration: 2000,
+        });
+      } else if (!this.form.desc) {
+        Message({
+          message: "请输入任务描述",
+          type: "warning",
+          duration: 2000,
+        });
+      } else {
+        this.form.title = '',
+        this.form.desc = ''
+        return true;
+      }
+    }
   },
+  // 问题，无法监听vuex里的assignment
+  computed:{
+    Listen(){
+      return store.state.assignments
+    }
+  },
+  watch:{
+    Listen(newVal) {
+      console.log('监听数据改变',newVal);
+      this.form.title = newVal.plan; // 按照规范在这里应该去使用getters来获取数据
+      this.form.desc = newVal.plan
+    }
+  }
 };
 </script>
 
-<style lang="less">
+<style lang="less" >
 .el-message-box {
   width: 800px;
 }
