@@ -32,7 +32,7 @@ export default {
     Listen(newVal) {
       console.log("监听数据改变", newVal);
       this.form.title = newVal.title; 
-      this.form.link = newVal.content;
+      this.form.desc = newVal.content;
     },
   },
 }

@@ -1,6 +1,7 @@
 import AddNotification from '@/components/Teacher/AddNotification'
 import AddAssignment from '@/components/Teacher/AddAssignment'
 import AddBooks from '@/components/Teacher/AddBooks'
+import { mapActions } from 'vuex'
 import {
   MessageBox,
   Message
@@ -8,17 +9,16 @@ import {
 export const NoticeMixin = {
   data() {
     return {
-
     }
   },
   computed: {
 
   },
   methods: {
-
-
     // 添加任务
     addAssignment() {
+      // clearAssignMents
+      this.$store.commit('clearAssignments')
       const submitTask = this.$createElement;
       MessageBox({
         title: "添加任务", // 标题
@@ -48,19 +48,12 @@ export const NoticeMixin = {
           }
         },
       }).then(() => {
+  
         Message({
           // 消息提示
           type: "success",
           message: "添加成功",
           duration: 2000,
-        });
-        this.tableData.push({
-          // 添加数据
-          code: 8,
-          plan: "leetcode刷题123",
-          name: "蜗牛123",
-          pushDate: "2016-05-02",
-          finishNum: 181 + "人",
         });
       });
     },
@@ -70,7 +63,8 @@ export const NoticeMixin = {
     // 利用vuex,点击修改时，将row传入vuex，AddAssignment组件里数据对应更新上vuex里的值
     changeAssignment(row) {
       // 修改vuex
-      this.$store.commit('changeAssignment', row)
+      // 调用actions里的函数
+      this.changeAM(row)
       const changeTask = this.$createElement;
       MessageBox({
         title: "修改任务", // 标题
@@ -126,6 +120,7 @@ export const NoticeMixin = {
 
     // 添加书籍
     addBooks() {
+      this.$store.commit('clearBooks')
       const submitTask = this.$createElement;
       MessageBox({
         title: "添加添加书籍", // 标题
@@ -166,7 +161,7 @@ export const NoticeMixin = {
 
     // 修改书籍信息
     changeBooks(row) {
-      this.$store.commit('changeBooks', row)
+      this.changeBK(row)
       const submitTask = this.$createElement;
       MessageBox({
         title: "修改书籍信息", // 标题
@@ -226,7 +221,9 @@ export const NoticeMixin = {
     },
 
     // 添加公告
+    
     addNotification() {
+      this.$store.commit('clearNotification')
       const submitTask = this.$createElement;
       MessageBox({
         title: "添加公告", // 标题
@@ -266,7 +263,8 @@ export const NoticeMixin = {
     },
     // 修改公告
     changeNotification(row) {
-      this.$store.commit('changeNotification', row)
+      // this.$store.commit('changeNotification', row)
+      this.changeNC(row)
       const submitTask = this.$createElement;
       MessageBox({
         title: "修改公告", // 标题
@@ -323,6 +321,12 @@ export const NoticeMixin = {
           });
         });
     },
+
+    ...mapActions([
+      'changeAM',
+      'changeBK',
+      'changeNC',
+    ]),
   },
 
 }

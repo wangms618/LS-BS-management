@@ -1,7 +1,7 @@
 <template>
   <div>
     <el-form ref="form" :model="form" label-width="80px">
-      <el-form-item label="封面上传">
+      <!-- <el-form-item label="封面上传">
         <el-upload
           class="upload-demo"
           action="https://jsonplaceholder.typicode.com/posts/"
@@ -16,7 +16,7 @@
         <el-dialog :visible.sync="dialogVisible">
           <img width="100%" :src="dialogImageUrl" alt="" />
         </el-dialog>
-      </el-form-item>
+      </el-form-item> -->
       <el-form-item label="书名">
         <el-input v-model="form.title" @blur="OnInput($event)"></el-input>
       </el-form-item>
@@ -26,7 +26,7 @@
       <el-form-item label="链接">
         <el-input
           type="textarea"
-          v-model="form.link"
+          v-model="form.links"
           placeholder='请输入对应格式，例:"https://xxxxx" '
         ></el-input>
       </el-form-item>
@@ -38,11 +38,15 @@
 import { Message } from "element-ui";
 import store from "@/store/index";
 export default {
+  mounted(){
+    console.log(store.state.books.links,123);
+  },
   data() {
     return {
       form: {
         title: store.state.books.name,
-        link: store.state.books.link,
+        author:store.state.books.author,
+        links: store.state.books.links,
       },
     };
   },
@@ -60,7 +64,7 @@ export default {
           type: "warning",
           duration: 2000,
         });
-      } else if (!this.form.link) {
+      } else if (!this.form.links) {
         Message({
           message: "请输入链接",
           type: "warning",
@@ -68,10 +72,10 @@ export default {
         });
       } else {
         let pattern = /^((https|http|ftp|rtsp|mms)?:\/\/)[^\s]+/;
-        if (pattern.test(this.form.link)) {
+        if (pattern.test(this.form.links)) {
           this.form.title = "";
           this.form.author = "";
-          this.form.link = "";
+          this.form.links = "";
           return true;
         } else {
           Message({
@@ -102,7 +106,8 @@ export default {
     Listen(newVal) {
       console.log("监听数据改变", newVal);
       this.form.title = newVal.name; 
-      this.form.link = newVal.link;
+      this.form.links = newVal.links;
+      this.form.author = newVal.author;
     },
   },
 };

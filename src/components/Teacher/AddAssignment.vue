@@ -20,7 +20,7 @@ export default {
     return {
       form: {
         title: store.state.assignments.plan,
-        desc: store.state.assignments.pushDate,
+        desc: store.state.assignments.plan,
       },
     };
   },
@@ -74,7 +74,7 @@ export default {
     Listen(newVal) {
       console.log('监听数据改变',newVal);
       this.form.title = newVal.plan; // 按照规范在这里应该去使用getters来获取数据
-      this.form.desc = newVal.pushDate
+      this.form.desc = newVal.plan
     }
   }
 };
