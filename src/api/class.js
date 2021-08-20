@@ -4,10 +4,10 @@ const Class = {
   async getClassList(isOpen = false) {
     try {
       const res = await axios.get('/getClassList')
-      if (!isOpen) return res.data.data
+      console.log(res)
+      if (!isOpen) return res.data
       else {
-
-        return res.data.data.filter(el => el.isOpen == 1 )
+        return res.data.filter(el => el.isOpen == 1)
       }
     } catch (err) {
       return []

@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"name":"前端",
+			"path": "."
+		},
+		{
+			"name":"后端",
+			"path": "..\\lm-back-end"
+		}
+	],
+	"settings": {}
+}
