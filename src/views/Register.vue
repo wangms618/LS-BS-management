@@ -1,18 +1,21 @@
 <template>
   <div class="register">
     <div class="main">
+      <!-- 标题 start -->
       <div class="header">旅梦学员信息注册</div>
+      <!-- 标题 end -->
+
+      <!-- 进度条 start -->
       <div class="step-wrap">
         <el-steps :active="index" finish-status="success">
           <el-step title="账号注册" icon="el-icon-edit"></el-step>
           <el-step title="信息填写" icon="el-icon-upload"></el-step>
-          <el-step
-            title="完成注册"
-            icon="el-icon-success"
-            :status="registerSuccess ? 'success' : 'wait'"
-          ></el-step>
+          <el-step title="完成注册" icon="el-icon-success"></el-step>
         </el-steps>
       </div>
+      <!-- 进度条 end -->
+
+      <!-- 表单：使用走马灯包裹实现下一页效果 start -->
       <el-carousel
         :autoplay="false"
         :arrow="'never'"
@@ -23,6 +26,7 @@
         :initial-index="0"
         ref="formPage"
       >
+        <!-- 账号基本信息表单 start -->
         <el-carousel-item class="userinfo">
           <div class="form-wrap">
             <el-form
@@ -33,6 +37,7 @@
               label-width="100px"
               status-icon
             >
+              <!-- 用户名 -->
               <el-form-item
                 label="用户名"
                 prop="username"
@@ -43,6 +48,8 @@
                   autocomplete="off"
                 ></el-input>
               </el-form-item>
+
+              <!-- 登陆密码 -->
               <el-form-item
                 label="密码"
                 prop="password"
@@ -54,6 +61,8 @@
                   autocomplete="off"
                 ></el-input>
               </el-form-item>
+
+              <!-- 重复密码 -->
               <el-form-item
                 label="重复密码"
                 prop="rePassword"
@@ -66,6 +75,7 @@
                 ></el-input>
               </el-form-item>
 
+              <!-- 注册码 -->
               <el-form-item
                 label="注册码"
                 prop="registerCode"
@@ -76,6 +86,9 @@
             </el-form>
           </div>
         </el-carousel-item>
+        <!-- 账号基本信息表单 end -->
+
+        <!-- 用户详细信息表单 start -->
         <el-carousel-item class="detailinfo">
           <div class="form-wrap">
             <el-form
@@ -85,9 +98,12 @@
               :model="detailinfoForm"
               :rules="detailRules"
             >
+              <!-- 真实姓名 -->
               <el-form-item label="真实姓名" prop="name" class="name info-item">
                 <el-input v-model="detailinfoForm.name"></el-input>
               </el-form-item>
+
+              <!-- 性别 -->
               <el-form-item label="性别" prop="sex">
                 <el-select
                   placeholder="请选择性别"
@@ -97,6 +113,8 @@
                   <el-option label="女" value="女"></el-option>
                 </el-select>
               </el-form-item>
+
+              <!-- 注册班级 -->
               <el-form-item label="班级" prop="ClassId">
                 <el-select
                   placeholder="班级"
@@ -112,6 +130,7 @@
                 </el-select>
               </el-form-item>
 
+              <!-- 年级 -->
               <el-form-item label="年级" prop="grade">
                 <el-select
                   placeholder="请选择年级"
@@ -125,12 +144,18 @@
                   ></el-option>
                 </el-select>
               </el-form-item>
+
+              <!-- 就读学校 -->
               <el-form-item label="学校" prop="school" class="name info-item">
                 <el-input v-model="detailinfoForm.school"></el-input>
               </el-form-item>
+
+              <!-- 手机号 -->
               <el-form-item label="手机号" prop="tel" class="name info-item">
                 <el-input v-model="detailinfoForm.tel"></el-input>
               </el-form-item>
+
+              <!-- email -->
               <el-form-item
                 label="电子邮箱"
                 prop="email"
@@ -138,17 +163,25 @@
               >
                 <el-input v-model="detailinfoForm.email"></el-input>
               </el-form-item>
+
+              <!-- qq -->
               <el-form-item label="QQ" prop="qq" class="name info-item">
                 <el-input v-model="detailinfoForm.qq"></el-input>
               </el-form-item>
+
+              <!-- 家庭住址 -->
               <el-form-item label="家庭住址" prop="addr" class="name info-item">
                 <el-input v-model="detailinfoForm.addr"></el-input>
               </el-form-item>
             </el-form>
           </div>
         </el-carousel-item>
+        <!-- 用户详细信息表单 end -->
+
+        <!-- 注册结果展示 start -->
         <el-carousel-item class="register-result">
           <div class="register-result-wrap">
+            <!-- 注册成功 start-->
             <el-col :sm="12" :lg="20" v-if="registerSuccess">
               <el-result
                 icon="success"
@@ -162,6 +195,9 @@
                 </template>
               </el-result>
             </el-col>
+            <!-- 注册成功 end-->
+
+            <!-- 注册失败 start-->
             <el-col :sm="12" :lg="20" v-else>
               <el-result icon="fail" title="注册失败" subTitle="请联系管理员">
                 <template slot="extra">
@@ -171,21 +207,31 @@
                 </template>
               </el-result>
             </el-col>
+            <!-- 注册失败 end-->
           </div>
         </el-carousel-item>
+        <!-- 注册结果展示 end -->
       </el-carousel>
+      <!-- 表单 end -->
+
+      <!-- 页面控制 start -->
       <div class="btn-wrap">
-        <el-button v-show="index == 1" size="mini" plain @click="pre"
-          >上一步</el-button
-        >
+        <!-- 上一页 -->
+        <el-button v-show="index == 1" size="mini" plain @click="pre">
+          上一步
+        </el-button>
+
+        <!-- 下一步&提交 -->
         <el-button
           :loading="btnLoading"
           v-show="index <= 1"
           type="primary"
           size="mini"
           @click="next"
-          >{{ index == 1 ? "提交" : "下一步" }}</el-button
         >
+          <!-- 根据当前页码显示提交或则下一步 -->
+          {{ index == 1 ? "提交" : "下一步" }}
+        </el-button>
       </div>
     </div>
   </div>
@@ -196,6 +242,7 @@ import User from "@/api/user.js";
 import Class from "@/api/class.js";
 export default {
   data() {
+    /* 校验两次输入的密码是否一致 */
     var validatePass2 = (rule, value, callback) => {
       if (value === "") {
         callback(new Error("请再次输入密码"));
@@ -205,6 +252,8 @@ export default {
         callback();
       }
     };
+
+    /* 校验输入的用户名是否合法 */
     var checkUsername = async (rule, value, callback) => {
       const res = await User.checkUsername(value);
       if (res) {
@@ -285,6 +334,7 @@ export default {
         addr: "",
         email: "",
         tel: "",
+        qq: "",
       },
       detailRules: {
         name: [{ required: true, message: "姓名不能为空", trigger: "blur" }],
@@ -311,46 +361,38 @@ export default {
           },
         ],
       },
-      classList: [
-        {
-          id: "1",
-          classname: "火山班",
-        },
-        {
-          id: "2",
-          classname: "三色班",
-        },
-        {
-          id: "3",
-          classname: "京喜班",
-        },
-      ],
+      classList: [],
       gradeList: [],
       registerSuccess: false,
       btnLoading: false,
     };
   },
   created() {
+    /* 初始化年级数组 */
     this.initGradeList();
+    /* 初始化可注册班级信息列表 */
     this.initClassList();
   },
   methods: {
+    /* 跳转到上一个表单 */
     pre() {
       this.$refs.formPage.prev();
       this.index--;
     },
+    /* 下一步按钮事件 */
     next() {
+      /* 当前页为第一个表单时，按钮显示下一步，点击时校验用户账号信息是否合法 */
       if (this.index == 0) {
         this.btnLoading = true;
         // 用户名校验
         this.$refs.userinfoForm.validate((valid) => {
           if (valid) {
-            this.btnLoading = false;
             this.$refs.formPage.next();
             this.index++;
           }
         });
       } else if (this.index == 1) {
+        /* 当前页为表单第二个页面是，按钮显示提交，点击时校验信息表单是否合法，合法则进行注册信息提交 */
         this.btnLoading = true;
         this.$refs.detailinfoForm.validate(async (valid) => {
           if (valid) {
@@ -362,16 +404,17 @@ export default {
             // 提交用户信息
             const res = await User.register(registerInfo);
             if (res.code == 200) {
-              // 注册成功
+              // 注册成功 设置注册状态为成功，展示注册成功页
               this.$refs.formPage.next();
-              this.index++;
-              this.btnLoading = false;
+              this.index += 2;
               this.registerSuccess = true;
             }
           }
         });
       }
+      this.btnLoading = false;
     },
+    /* 初始化年级信息函数 */
     initGradeList() {
       const curYear = new Date().getFullYear();
       this.gradeList.push(curYear);
@@ -383,18 +426,21 @@ export default {
       }
       console.log(this.gradeList);
     },
+    /* 初始化班级信息函数 */
     async initClassList() {
+      /* 获取所有班级列表并要求只返回可以注册班级 */
       const classList = await Class.getClassList(true);
-      console.log(classList);
       this.classList = [...classList];
     },
+    /* 跳转到登陆页 */
     toLogin() {
       this.$router.push({ path: "/Login" });
     },
+    /* 返回到表单第一页 */
     back() {
       this.pre();
       this.pre();
-      this.registerSuccess = false
+      this.registerSuccess = false;
     },
   },
 };
