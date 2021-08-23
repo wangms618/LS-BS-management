@@ -42,11 +42,6 @@ export default new Vuex.Store({
       if (state.notification) {
         state.notification = ''
       }
-    },
-    clearSalary(state) {
-      if (state.salary) {
-        state.salary = ''
-      }
     }
   },
   actions: {
@@ -59,9 +54,7 @@ export default new Vuex.Store({
     changeNC({ commit }, obj) {
       commit(types.CHANGE_NOTIFICATION, obj)
     },
-    changeSA({ commit }, obj) {
-      commit(types.CHANGE_SALARY, obj)
-    }
+
   },
   getters: {
 

@@ -340,8 +340,8 @@ export const salaryMixin = {
 
   },
   methods: {
-    changeSalary(row) {
-      this.changeSA(row)
+    changeSalary(item) {
+      this.changeSA(item)
       // console.log(item)
       const submitTask = this.$createElement;
       MessageBox({

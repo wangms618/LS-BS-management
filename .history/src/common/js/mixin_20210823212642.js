@@ -1,7 +1,6 @@
 import AddNotification from '@/components/Teacher/AddNotification'
 import AddAssignment from '@/components/Teacher/AddAssignment'
 import AddBooks from '@/components/Teacher/AddBooks'
-import cSalary from '@/components/Teacher/cSalary'
 import { mapActions } from 'vuex'
 import {
   MessageBox,
@@ -331,57 +330,4 @@ export const NoticeMixin = {
   },
 
 }
-export const salaryMixin = {
-  data() {
-    return {
-    }
-  },
-  computed: {
-
-  },
-  methods: {
-    changeSalary(row) {
-      this.changeSA(row)
-      // console.log(item)
-      const submitTask = this.$createElement;
-      MessageBox({
-        title: '修改薪资信息',
-        closeOnClickModal: false,
-        message: submitTask(cSalary, {
-          ref: 'childMethod'
-        }),
-        showCancelButton: true,
-        confirmButtonText: "修改", // 确定按钮的文本内容
-        cancelButtonText: "取消", // 取消按钮的文本内容
-        beforeClose: (action, instance, done) => {
-          if (action === "confirm") {
-            // 点击确定
-            instance.confirmButtonLoading = true;
-            instance.confirmButtonText = "执行中...";
-            if (this.$refs.childMethod.onSubmit()) {
-              // 调用子组件的onSubmit方法，成功提交
-              instance.confirmButtonLoading = false;
-              done();
-            } else {
-              instance.confirmButtonLoading = false;
-              instance.confirmButtonText = "修改毕业信息";
-            }
-          } else {
-            // 点击退出
-            done();
-          }
-        },
-      }).then(() => {
-        this.Message({
-          // 消息提示
-          type: "success",
-          message: "修改成功",
-          duration: 2000,
-        });
-      })
-    },
-    ...mapActions([
-      'changeSA',
-    ]),
-  }
-}
+export const

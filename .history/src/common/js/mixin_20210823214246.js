@@ -340,9 +340,8 @@ export const salaryMixin = {
 
   },
   methods: {
-    changeSalary(row) {
-      this.changeSA(row)
-      // console.log(item)
+    changeSalary(item) {
+      console.log(item)
       const submitTask = this.$createElement;
       MessageBox({
         title: '修改薪资信息',
@@ -379,9 +378,6 @@ export const salaryMixin = {
           duration: 2000,
         });
       })
-    },
-    ...mapActions([
-      'changeSA',
-    ]),
+    }
   }
 }

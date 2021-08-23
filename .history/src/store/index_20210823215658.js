@@ -25,7 +25,7 @@ export default new Vuex.Store({
     },
     [types.CHANGE_SALARY](state, obj) {
       state.salary = obj
-      console.log('修改毕业信息', obj);
+      console.log('修改毕业信息', obj.salary);
     },
     // 清空输入栏，原因：点击修改后输入栏会保存之前输入栏的内容
     clearAssignments(state) {
@@ -59,9 +59,7 @@ export default new Vuex.Store({
     changeNC({ commit }, obj) {
       commit(types.CHANGE_NOTIFICATION, obj)
     },
-    changeSA({ commit }, obj) {
-      commit(types.CHANGE_SALARY, obj)
-    }
+
   },
   getters: {
 
