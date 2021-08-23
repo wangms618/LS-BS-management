@@ -8,11 +8,7 @@
       <span class="toregister" @click="toRegister">点击这里注册账号</span>
       <div class="login-account">
         <img src="../assets/img/userlogo.png" alt="" />
-        <el-input
-          placeholder="登录账号"
-          v-model="username"
-        >
-        </el-input>
+        <el-input placeholder="登录账号" v-model="username"> </el-input>
       </div>
       <div class="login-password">
         <img src="../assets/img/passlogo.png" />
@@ -22,7 +18,7 @@
           show-password
         ></el-input>
       </div>
-      <el-button type="primary" round>登录</el-button>
+      <el-button type="primary" round @click="login">登录</el-button>
       <div class="remember-title">
         <el-switch v-model="rememberpw"> </el-switch>
         <span class="remember-password">记住密码</span>
@@ -33,6 +29,9 @@
 </template>
 
 <script>
+import User from "../api/user";
+import { Message } from "element-ui";
+import role from "../common/js/roleType";
 export default {
   data() {
     return {
@@ -45,7 +44,29 @@ export default {
     toRegister() {
       this.$router.push("Home");
     },
+    async login() {
+      const res = await User.login(this.username, this.password);
+      if (res) {
+        if (res.code === 200) {
+          // 登陆成功
+          await Message.success(res.message);
+          sessionStorage.setItem("user", JSON.stringify(res.data));
+          this.$store.commit("saveUserInfo", res.data);
+          console.log(this.$store.state.user);
+          if (res.data.role & role.STU) {
+            // 学生页
+          } else {
+            // 教师页
+          }
+        } else if (res.code === 404) {
+          Message.error(res.message);
+        } else {
+          Message.error(res.message || "未知错误");
+        }
+      }
+    },
   },
+  created() {},
 };
 </script>
 
