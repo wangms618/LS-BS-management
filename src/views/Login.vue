@@ -55,8 +55,11 @@ export default {
           console.log(this.$store.state.user);
           if (res.data.role & role.STU) {
             // 学生页
+            // home/student/
+            this.$router.push({path:'/Home'})
           } else {
             // 教师页
+            // home/teacher/
           }
         } else if (res.code === 404) {
           Message.error(res.message);
