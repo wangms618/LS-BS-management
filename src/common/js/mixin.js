@@ -7,7 +7,7 @@ import {
   MessageBox,
   Message
 } from 'element-ui';
-export const Mixin = {
+export const NoticeMixin = {
   data() {
     return {
     }

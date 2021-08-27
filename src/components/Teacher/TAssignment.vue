@@ -22,7 +22,9 @@
       <el-table-column label="操作" width="200">
         <template slot-scope="scope">
           <!-- 拿到对应行的对象 -->
-          <el-button size="small" @click.stop="changeAssignment(scope.row)">修改</el-button>
+          <el-button size="small" @click.stop="changeAssignment(scope.row)"
+            >修改</el-button
+          >
           <el-button
             type="danger"
             size="small"
@@ -38,18 +40,49 @@
         >添加任务</el-button
       >
     </div>
+    <!-- 点击详情弹出的窗口 -->
+    <el-dialog
+      title="任务详情"
+      :visible.sync="dialogVisible"
+      width="50%"
+      :before-close="handleClose"
+    >
+      <el-descriptions column="1" direction="vertical">
+        <el-descriptions-item label="任务名" labelStyle="font-weight:1000">{{
+          this.content.plan
+        }}</el-descriptions-item>
+        <el-descriptions-item label="任务内容" labelStyle="font-weight:1000">{{
+          this.content.plan
+        }}</el-descriptions-item>
+        <el-descriptions-item label="发布人" labelStyle="font-weight:1000"
+          ><el-tag size="small">{{
+            this.content.name
+          }}</el-tag></el-descriptions-item
+        >
+        <el-descriptions-item label="发布日期" labelStyle="font-weight:1000">{{
+          this.content.pushDate
+        }}</el-descriptions-item>
+      </el-descriptions>
+      <span slot="footer" class="dialog-footer">
+        <el-button type="primary" @click="dialogVisible = false"
+          >确 定</el-button
+        >
+      </span>
+    </el-dialog>
   </div>
 </template>
 
 <script>
-import { Mixin } from '@/common/js/mixin.js'
+import { NoticeMixin } from "@/common/js/mixin.js";
 export default {
-  mixins:[Mixin],
+  mixins: [NoticeMixin],
   methods: {
     // 选中事件
     handleCurrentChange(currentRow, oldCurrentRow) {
       console.log(currentRow, oldCurrentRow);
       console.log("handleCurrentChange");
+      this.dialogVisible = true;
+      this.content = currentRow;
     },
   },
   data() {
@@ -98,6 +131,9 @@ export default {
           finishNum: 18 + "人",
         },
       ],
+      dialogVisible: false,
+      // 存放要查看的任务的详情
+      content: "",
     };
   },
 };

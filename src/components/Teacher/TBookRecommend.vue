@@ -36,9 +36,9 @@
 </template>
 
 <script>
-import { Mixin } from "@/common/js/mixin.js";
+import { NoticeMixin } from "@/common/js/mixin.js";
 export default {
-  mixins: [Mixin],
+  mixins: [NoticeMixin],
   data() {
     return {
       books: [
