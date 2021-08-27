@@ -1,10 +1,10 @@
+// 书籍推荐
 <template>
   <div class="container">
     <div class="table">
       <div class="table-name"><span>书名</span></div>
       <div class="table-author"><span>作者</span></div>
       <div class="table-link"><span>链接</span></div>
-      <div class="table-button"><span>操作</span></div>
     </div>
     <div class="books-box">
       <div class="books" v-for="item in books" :key="item.id">
@@ -17,28 +17,13 @@
         <div class="books-link">
           <el-link type="primary" :href="item.links">链接</el-link>
         </div>
-        <div class="books-button">
-          <div class="buttons">
-            <el-button size="small" @click="changeBooks(item)">修改</el-button>
-            <el-button size="small" type="danger" @click="deleteBooks(item.id)"
-              >删除</el-button
-            >
-          </div>
-        </div>
       </div>
-    </div>
-    <div class="add-books">
-      <el-button type="primary" size="medium" @click="addBooks"
-        >添加书籍</el-button
-      >
     </div>
   </div>
 </template>
 
 <script>
-import { Mixin } from "@/common/js/mixin.js";
 export default {
-  mixins: [Mixin],
   data() {
     return {
       books: [
@@ -88,10 +73,6 @@ export default {
       flex: 1;
       text-align: center;
     }
-    .table-button {
-      width: 25%;
-      text-align: center;
-    }
   }
   .books-box {
     height: 420px;
@@ -123,19 +104,6 @@ export default {
           margin: auto;
         }
       }
-      .books-button {
-        width: 25%;
-        display: flex;
-        .buttons {
-          margin: auto;
-        }
-      }
-    }
-  }
-  .add-books {
-    margin-top: 10px;
-    .el-button {
-      float: right;
     }
   }
 }

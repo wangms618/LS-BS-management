@@ -42,9 +42,9 @@
 </template>
 
 <script>
-import { NoticeMixin } from '@/common/js/mixin.js'
+import { Mixin } from '@/common/js/mixin.js'
 export default {
-  mixins:[NoticeMixin],
+  mixins:[Mixin],
   methods: {
     // 选中事件
     handleCurrentChange(currentRow, oldCurrentRow) {
