@@ -19,6 +19,7 @@ const routes = [
   {
     path: '/Home',
     component: () => import('@/views/Home.vue'),
+    // redirect: '/StudentNotice', // 调试学生页面时开启
     redirect: '/TeacherHome',
     children: [
       {
@@ -57,17 +58,16 @@ const routes = [
         component: () => import('@/views/Teacher/Notice.vue')
       },
     ]
+    // 调试学生页面时开启
+    // children: [
+    //   {
+    //     path: '/StudentNotice',
+    //     name: "StudentNotice",
+    //     component: () => import('@/views/Student/Notice.vue'),
+    //   }
+    // ]
   },
 
-
-  // {
-  //   path: '/StudentData',
-  //   name: "StudentData",
-  //   component: () => import('@/views/Student/StudentData.vue'),
-  //   // meta:{
-  //   //   index:2
-  //   // }
-  // }
 ]
 
 const router = new VueRouter({

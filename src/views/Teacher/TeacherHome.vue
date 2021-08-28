@@ -13,7 +13,7 @@
   <div class="container">
     <div class="header">
       <i class="el-icon-s-home" style="color: #ffd04b"></i>
-      <span class="header-title">就业信息</span>
+      <span class="header-title">首页</span>
     </div>
     <div class="top">
       <div class="top-left">

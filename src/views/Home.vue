@@ -5,6 +5,7 @@
       <el-aside width="160px">
         <span>旅梦后台管理系统</span>
         <teacher-nav-menu></teacher-nav-menu>
+        <!-- <student-nav-menu></student-nav-menu> -->
       </el-aside>
       <el-container>
         <el-header>
@@ -19,12 +20,14 @@
 </template>
 
 <script>
+// import StudentNavMenu from '@/components/Student/StudentNavMenu'
 import TeacherNavMenu from "@/components/Teacher/TeacherNavMenu";
 import VHeader from "@/components/Common/Header.vue";
 export default {
   components: {
     TeacherNavMenu,
     VHeader,
+    // StudentNavMenu,
   },
 };
 </script>

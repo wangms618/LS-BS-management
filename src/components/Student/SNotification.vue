@@ -15,24 +15,12 @@
       <el-table-column label="操作" width="200">
         <template slot-scope="scope">
           <!-- 拿到对应行的对象 -->
-          <el-button size="small" @click.stop="changeNotification(scope.row)"
-            >修改</el-button
+          <el-button size="small" @click.stop="showNotification(scope.row)"
+            >详情</el-button
           >
-          <el-button
-            type="danger"
-            size="small"
-            @click.stop="deleteNotification(scope.row)"
-          >
-            删除
-          </el-button>
         </template>
       </el-table-column>
     </el-table>
-    <div class="add-notice">
-      <el-button type="primary" size="medium" @click="addNotification"
-        >添加公告</el-button
-      >
-    </div>
     <el-dialog
       title="公告详情"
       :visible.sync="dialogVisible"
@@ -63,9 +51,7 @@
 </template>
 
 <script>
-import { NoticeMixin } from "@/common/js/mixin.js";
 export default {
-  mixins: [NoticeMixin],
   data() {
     return {
       tableData: [
@@ -104,6 +90,14 @@ export default {
       console.log("handleCurrentChange");
       this.dialogVisible = true;
       this.content = currentRow;
+    },
+    showNotification(row) {
+      console.log(row);
+      this.content = row;
+      this.dialogVisible = true;
+    },
+    handleClose(done) {
+      done();
     },
   },
 };
