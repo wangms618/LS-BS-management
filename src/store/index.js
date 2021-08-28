@@ -8,7 +8,9 @@ export default new Vuex.Store({
     salary: '',
     assignments: '',
     books: '',
-    notification: ''
+    notification: '',
+    isLogin: false,
+    user: {}
   },
   mutations: {
     [types.CHANGE_ASSIGNMENTS](state, obj) {
@@ -46,6 +48,12 @@ export default new Vuex.Store({
     clearSalary(state) {
       if (state.salary) {
         state.salary = ''
+      }
+    },
+    // 保存登陆用户信息
+    saveUserInfo(state, user) {
+      if (user) {
+        state.user = user
       }
     }
   },

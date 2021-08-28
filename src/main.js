@@ -10,8 +10,12 @@ Vue.use(ElementUI);
 Vue.config.productionTip = false
 Vue.prototype.$echarts = echarts
 
+
+
+
 new Vue({
   router,
   store,
   render: h => h(App)
 }).$mount('#app')
+
