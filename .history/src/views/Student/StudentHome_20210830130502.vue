@@ -1,7 +1,7 @@
 <!--
  * @Author: lvEndBack-manager
  * @Date: 2021-08-06 10:43:14
- * @LastEditTime: 2021-08-30 13:17:52
+ * @LastEditTime: 2021-08-30 13:04:19
  * @LastEditors: Please set LastEditors
  * @Description: 展示用户主要信息
     老师，管理员：查看当前课时，班级数，学生人数    每周到课人数 和 打卡人数   最近打卡人信息
@@ -36,14 +36,14 @@
             <div class="first">
               <i class="el-icon-s-management"></i>
             </div>
-            <div class="first">当前课时</div>
+            <div class="first">leetcode打卡</div>
             <div class="count">100</div>
           </div>
           <div class="right-ico">
             <div class="first">
               <i class="el-icon-s-marketing"></i>
             </div>
-            <div class="first">班级数量</div>
+            <div class="first">掘金打卡</div>
             <div class="count">200</div>
           </div>
           <div class="right-ico">
@@ -109,9 +109,9 @@
           </el-table-column>
 
           <el-table-column
-            prop="studentClass"
+            prop="studentSex"
             align="center"
-            label="班级"
+            label="性别"
             width="140"
           >
           </el-table-column>
@@ -178,70 +178,70 @@ export default {
       tableData: [
         {
           studentName: "王小虎",
-          studentClass: "三色班",
+          studentSex: "男",
           schoolGrade: "东华理工大学-18级",
           studentLearning: "掘金打卡",
           submissionTime: "8.7 （17：19：05）",
         },
         {
           studentName: "王小虎",
-          studentClass: "三色班",
+          studentSex: "男",
           schoolGrade: "东华理工大学-18级",
           studentLearning: "掘金打卡",
           submissionTime: "8.7 （17：19：05）",
         },
         {
           studentName: "王小虎",
-          studentClass: "三色班",
+          studentSex: "男",
           schoolGrade: "东华理工大学-18级",
           studentLearning: "掘金打卡",
           submissionTime: "8.7 （17：19：05）",
         },
         {
           studentName: "王小虎",
-          studentClass: "三色班",
+          studentSex: "男",
           schoolGrade: "东华理工大学-18级",
           studentLearning: "掘金打卡",
           submissionTime: "8.7 （17：19：05）",
         },
         {
           studentName: "王小虎",
-          studentClass: "三色班",
+          studentSex: "男",
           schoolGrade: "东华理工大学-18级",
           studentLearning: "掘金打卡",
           submissionTime: "8.7 （17：19：05）",
         },
         {
           studentName: "王小虎",
-          studentClass: "三色班",
+          studentSex: "男",
           schoolGrade: "东华理工大学-18级",
           studentLearning: "掘金打卡",
           submissionTime: "8.7 （17：19：05）",
         },
         {
           studentName: "王小虎",
-          studentClass: "三色班",
+          studentSex: "男",
           schoolGrade: "东华理工大学-18级",
           studentLearning: "掘金打卡",
           submissionTime: "8.7 （17：19：05）",
         },
         {
           studentName: "王小虎",
-          studentClass: "三色班",
+          studentSex: "男",
           schoolGrade: "东华理工大学-18级",
           studentLearning: "掘金打卡",
           submissionTime: "8.7 （17：19：05）",
         },
         {
           studentName: "王小虎",
-          studentClass: "三色班",
+          studentSex: "男",
           schoolGrade: "东华理工大学-18级",
           studentLearning: "掘金打卡",
           submissionTime: "8.7 （17：19：05）",
         },
         {
           studentName: "王小虎",
-          studentClass: "三色班",
+          studentSex: "男",
           schoolGrade: "东华理工大学-18级",
           studentLearning: "掘金打卡",
           submissionTime: "8.7 （17：19：05）",

@@ -9,7 +9,7 @@
         text-color="#fff"
         active-text-color="#ffd04b"
       >
-        <el-menu-item index="/StudentHome">
+        <el-menu-item index="/StudentData">
           <i class="el-icon-s-custom"></i>
           <span slot="title">首页</span>
         </el-menu-item>

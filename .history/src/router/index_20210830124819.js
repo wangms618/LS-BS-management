@@ -64,16 +64,6 @@ const routes = [
         path: '/StudentNotice',
         name: "StudentNotice",
         component: () => import('@/views/Student/Notice.vue'),
-      },
-      {
-        path: '/StudentHome',
-        name: "StudentHome",
-        component: () => import('@/views/Student/StudentHome.vue'),
-      },
-      {
-        path: '/StudentData',
-        name: "StudentData",
-        component: () => import('@/views/Student/StudentData.vue'),
       }
     ]
   },

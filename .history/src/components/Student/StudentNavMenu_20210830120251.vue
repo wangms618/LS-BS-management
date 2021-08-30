@@ -9,13 +9,21 @@
         text-color="#fff"
         active-text-color="#ffd04b"
       >
-        <el-menu-item index="/StudentHome">
+        <el-menu-item index="/StudentData">
+          <i class="el-icon-s-home"></i>
+          <span slot="title">学习数据</span>
+        </el-menu-item>
+        <el-menu-item index="/StudentData">
+          <i class="el-icon-s-claim"></i>
+          <span slot="title">学生数据</span>
+        </el-menu-item>
+        <el-menu-item index="/StudentData">
           <i class="el-icon-s-custom"></i>
-          <span slot="title">首页</span>
+          <span slot="title">用户管理</span>
         </el-menu-item>
         <el-menu-item index="/StudentData">
           <i class="el-icon-s-unfold"></i>
-          <span slot="title">就业信息</span>
+          <span slot="title">班级列表</span>
         </el-menu-item>
         <el-menu-item index="StudentNotice">
           <i class="el-icon-s-promotion"></i>

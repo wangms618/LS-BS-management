@@ -48,7 +48,7 @@
 </template>
 
 <script>
-import salarytable from "@/components/Student/SalaryTable.vue";
+import salarytable from "@/components/Teacher/SalaryTable.vue";
 export default {
   data() {
     return {
