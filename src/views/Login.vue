@@ -32,6 +32,7 @@
 import User from "../api/user";
 import { Message } from "element-ui";
 import role from "../common/js/roleType";
+import Cookies from "js-cookie";
 export default {
   data() {
     return {
@@ -50,16 +51,19 @@ export default {
         if (res.code === 200) {
           // 登陆成功
           await Message.success(res.message);
-          sessionStorage.setItem("user", JSON.stringify(res.data));
+          // 保存用户信息至Cookie中
+          Cookies.set("user", JSON.stringify(res.data));
+          // 保存信息到vuex中
           this.$store.commit("saveUserInfo", res.data);
           console.log(this.$store.state.user);
           if (res.data.role & role.STU) {
             // 学生页
-            // home/student/
-            this.$router.push({path:'/Home'})
+            // student/home
+            this.$router.push({ name: "StudentHome" });
           } else {
             // 教师页
             // home/teacher/
+            this.$router.push({ name: "TeacherHome" });
           }
         } else if (res.code === 404) {
           Message.error(res.message);
