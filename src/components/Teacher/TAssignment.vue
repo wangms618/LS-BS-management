@@ -93,7 +93,7 @@ export default {
           plan: "leetcode刷题1",
           name: "蜗牛",
           pushDate: "2016-05-02",
-          finishNum: 18 + "人",
+          finishNum: 20 + "人",
         },
         {
           code: 2,
